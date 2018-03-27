@@ -1,0 +1,966 @@
+
+MiniIRSensorSmd.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000400  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000497  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000003d  00800060  00800060  00000494  2**0
+                  ALLOC
+  3 .fuse         00000003  00820000  00820000  00000494  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .comment      00000030  00000000  00000000  00000497  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000004c8  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000048  00000000  00000000  00000504  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000c92  00000000  00000000  0000054c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000723  00000000  00000000  000011de  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000516  00000000  00000000  00001901  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000000c4  00000000  00000000  00001e18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000006d8  00000000  00000000  00001edc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00000490  00000000  00000000  000025b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000078  00000000  00000000  00002a44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0e c0       	rjmp	.+28     	; 0x1e <__ctors_end>
+   2:	1b c0       	rjmp	.+54     	; 0x3a <__bad_interrupt>
+   4:	1a c0       	rjmp	.+52     	; 0x3a <__bad_interrupt>
+   6:	19 c0       	rjmp	.+50     	; 0x3a <__bad_interrupt>
+   8:	18 c0       	rjmp	.+48     	; 0x3a <__bad_interrupt>
+   a:	17 c0       	rjmp	.+46     	; 0x3a <__bad_interrupt>
+   c:	16 c0       	rjmp	.+44     	; 0x3a <__bad_interrupt>
+   e:	15 c0       	rjmp	.+42     	; 0x3a <__bad_interrupt>
+  10:	14 c0       	rjmp	.+40     	; 0x3a <__bad_interrupt>
+  12:	13 c0       	rjmp	.+38     	; 0x3a <__bad_interrupt>
+  14:	12 c0       	rjmp	.+36     	; 0x3a <__bad_interrupt>
+  16:	12 c0       	rjmp	.+36     	; 0x3c <__vector_11>
+  18:	10 c0       	rjmp	.+32     	; 0x3a <__bad_interrupt>
+  1a:	0f c0       	rjmp	.+30     	; 0x3a <__bad_interrupt>
+  1c:	0e c0       	rjmp	.+28     	; 0x3a <__bad_interrupt>
+
+0000001e <__ctors_end>:
+  1e:	11 24       	eor	r1, r1
+  20:	1f be       	out	0x3f, r1	; 63
+  22:	cf ed       	ldi	r28, 0xDF	; 223
+  24:	cd bf       	out	0x3d, r28	; 61
+
+00000026 <__do_clear_bss>:
+  26:	20 e0       	ldi	r18, 0x00	; 0
+  28:	a0 e6       	ldi	r26, 0x60	; 96
+  2a:	b0 e0       	ldi	r27, 0x00	; 0
+  2c:	01 c0       	rjmp	.+2      	; 0x30 <.do_clear_bss_start>
+
+0000002e <.do_clear_bss_loop>:
+  2e:	1d 92       	st	X+, r1
+
+00000030 <.do_clear_bss_start>:
+  30:	ad 39       	cpi	r26, 0x9D	; 157
+  32:	b2 07       	cpc	r27, r18
+  34:	e1 f7       	brne	.-8      	; 0x2e <.do_clear_bss_loop>
+  36:	d1 d1       	rcall	.+930    	; 0x3da <main>
+  38:	e1 c1       	rjmp	.+962    	; 0x3fc <_exit>
+
+0000003a <__bad_interrupt>:
+  3a:	e2 cf       	rjmp	.-60     	; 0x0 <__vectors>
+
+0000003c <__vector_11>:
+#endif
+writes(nearData; farData; offData)
+writes(volatile)
+pre(nearData.invar(); farData.invar(); offData.invar())
+post(nearData.invar(); farData.invar(); offData.invar())
+{
+  3c:	1f 92       	push	r1
+  3e:	0f 92       	push	r0
+  40:	0f b6       	in	r0, 0x3f	; 63
+  42:	0f 92       	push	r0
+  44:	11 24       	eor	r1, r1
+  46:	2f 93       	push	r18
+  48:	3f 93       	push	r19
+  4a:	4f 93       	push	r20
+  4c:	5f 93       	push	r21
+  4e:	6f 93       	push	r22
+  50:	7f 93       	push	r23
+  52:	8f 93       	push	r24
+  54:	9f 93       	push	r25
+  56:	af 93       	push	r26
+  58:	bf 93       	push	r27
+  5a:	ef 93       	push	r30
+  5c:	ff 93       	push	r31
+	const uint16_t adcVal = ADC & 1023u;			// get the ADC reading from the previous conversion
+  5e:	84 b1       	in	r24, 0x04	; 4
+  60:	95 b1       	in	r25, 0x05	; 5
+  62:	ac 01       	movw	r20, r24
+  64:	53 70       	andi	r21, 0x03	; 3
+	const uint8_t locTickCounter = (uint8_t)tickCounter;
+  66:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <tickCounter>
+  6a:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <tickCounter+0x1>
+	while (TCNT0 < 3u * 8u) {}						// delay a little until the ADC s/h has taken effect. 3 ADC clocks should be enough, and 1 ADC clock is 8 timer 0 clocks.
+  6e:	82 b7       	in	r24, 0x32	; 50
+  70:	88 31       	cpi	r24, 0x18	; 24
+  72:	e8 f3       	brcs	.-6      	; 0x6e <__SREG__+0x2f>
+	switch(locTickCounter & 0x03u)
+  74:	c9 01       	movw	r24, r18
+  76:	83 70       	andi	r24, 0x03	; 3
+  78:	99 27       	eor	r25, r25
+  7a:	81 30       	cpi	r24, 0x01	; 1
+  7c:	91 05       	cpc	r25, r1
+  7e:	51 f0       	breq	.+20     	; 0x94 <__SREG__+0x55>
+  80:	38 f0       	brcs	.+14     	; 0x90 <__SREG__+0x51>
+  82:	82 30       	cpi	r24, 0x02	; 2
+  84:	91 05       	cpc	r25, r1
+  86:	59 f1       	breq	.+86     	; 0xde <__SREG__+0x9f>
+  88:	03 97       	sbiw	r24, 0x03	; 3
+  8a:	09 f4       	brne	.+2      	; 0x8e <__SREG__+0x4f>
+  8c:	4d c0       	rjmp	.+154    	; 0x128 <__stack+0x49>
+  8e:	70 c0       	rjmp	.+224    	; 0x170 <__stack+0x91>
+	{
+		case 0:
+			// Far LED is on, we just did no reading, we are doing a far reading now and an off reading next
+			PORTB &= ~BITVAL(PortBFarLedBit);		// turn far LED off
+  90:	c0 98       	cbi	0x18, 0	; 24
+			break;
+  92:	6e c0       	rjmp	.+220    	; 0x170 <__stack+0x91>
+		
+		case 1:
+			// LEDs are off, we just did a far reading, we are doing a off reading now and a near reading next			
+			if (running)
+  94:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+  98:	88 23       	and	r24, r24
+  9a:	f9 f0       	breq	.+62     	; 0xda <__SREG__+0x9b>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+  9c:	a7 e7       	ldi	r26, 0x77	; 119
+  9e:	b0 e0       	ldi	r27, 0x00	; 0
+  a0:	50 96       	adiw	r26, 0x10	; 16
+  a2:	2d 91       	ld	r18, X+
+  a4:	3c 91       	ld	r19, X
+  a6:	51 97       	sbiw	r26, 0x11	; 17
+  a8:	52 96       	adiw	r26, 0x12	; 18
+  aa:	8c 91       	ld	r24, X
+  ac:	52 97       	sbiw	r26, 0x12	; 18
+  ae:	e8 2f       	mov	r30, r24
+  b0:	f0 e0       	ldi	r31, 0x00	; 0
+  b2:	24 0f       	add	r18, r20
+  b4:	35 1f       	adc	r19, r21
+  b6:	ee 0f       	add	r30, r30
+  b8:	ff 1f       	adc	r31, r31
+  ba:	e9 58       	subi	r30, 0x89	; 137
+  bc:	ff 4f       	sbci	r31, 0xFF	; 255
+  be:	60 81       	ld	r22, Z
+  c0:	71 81       	ldd	r23, Z+1	; 0x01
+  c2:	26 1b       	sub	r18, r22
+  c4:	37 0b       	sbc	r19, r23
+  c6:	51 96       	adiw	r26, 0x11	; 17
+  c8:	3c 93       	st	X, r19
+  ca:	2e 93       	st	-X, r18
+  cc:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+  ce:	51 83       	std	Z+1, r21	; 0x01
+  d0:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1u) % cyclesAveragedIR);
+  d2:	8f 5f       	subi	r24, 0xFF	; 255
+  d4:	87 70       	andi	r24, 0x07	; 7
+  d6:	52 96       	adiw	r26, 0x12	; 18
+  d8:	8c 93       	st	X, r24
+			// LEDs are off, we just did a far reading, we are doing a off reading now and a near reading next			
+			if (running)
+			{
+				farData.addReading(adcVal);
+			}
+			PORTB |= BITVAL(PortBNearLedBit);		// turn near LED on
+  da:	c1 9a       	sbi	0x18, 1	; 24
+			break;
+  dc:	49 c0       	rjmp	.+146    	; 0x170 <__stack+0x91>
+					
+		case 2:
+			// Near LED is on, we just did an off reading, we are doing a near reading now and a dummy off reading next
+			if (running)
+  de:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+  e2:	88 23       	and	r24, r24
+  e4:	f9 f0       	breq	.+62     	; 0x124 <__stack+0x45>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+  e6:	a4 e6       	ldi	r26, 0x64	; 100
+  e8:	b0 e0       	ldi	r27, 0x00	; 0
+  ea:	50 96       	adiw	r26, 0x10	; 16
+  ec:	2d 91       	ld	r18, X+
+  ee:	3c 91       	ld	r19, X
+  f0:	51 97       	sbiw	r26, 0x11	; 17
+  f2:	52 96       	adiw	r26, 0x12	; 18
+  f4:	8c 91       	ld	r24, X
+  f6:	52 97       	sbiw	r26, 0x12	; 18
+  f8:	e8 2f       	mov	r30, r24
+  fa:	f0 e0       	ldi	r31, 0x00	; 0
+  fc:	24 0f       	add	r18, r20
+  fe:	35 1f       	adc	r19, r21
+ 100:	ee 0f       	add	r30, r30
+ 102:	ff 1f       	adc	r31, r31
+ 104:	ec 59       	subi	r30, 0x9C	; 156
+ 106:	ff 4f       	sbci	r31, 0xFF	; 255
+ 108:	60 81       	ld	r22, Z
+ 10a:	71 81       	ldd	r23, Z+1	; 0x01
+ 10c:	26 1b       	sub	r18, r22
+ 10e:	37 0b       	sbc	r19, r23
+ 110:	51 96       	adiw	r26, 0x11	; 17
+ 112:	3c 93       	st	X, r19
+ 114:	2e 93       	st	-X, r18
+ 116:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 118:	51 83       	std	Z+1, r21	; 0x01
+ 11a:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1u) % cyclesAveragedIR);
+ 11c:	8f 5f       	subi	r24, 0xFF	; 255
+ 11e:	87 70       	andi	r24, 0x07	; 7
+ 120:	52 96       	adiw	r26, 0x12	; 18
+ 122:	8c 93       	st	X, r24
+			// Near LED is on, we just did an off reading, we are doing a near reading now and a dummy off reading next
+			if (running)
+			{
+				offData.addReading(adcVal);
+			}
+			PORTB &= ~BITVAL(PortBNearLedBit);		// turn near LED off
+ 124:	c1 98       	cbi	0x18, 1	; 24
+			break;
+ 126:	24 c0       	rjmp	.+72     	; 0x170 <__stack+0x91>
+
+		case 3:
+			// Far LED is on, we just did an off reading, we are doing another off reading now which will be discarded
+			if (running)
+ 128:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 12c:	88 23       	and	r24, r24
+ 12e:	f9 f0       	breq	.+62     	; 0x16e <__stack+0x8f>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+ 130:	aa e8       	ldi	r26, 0x8A	; 138
+ 132:	b0 e0       	ldi	r27, 0x00	; 0
+ 134:	50 96       	adiw	r26, 0x10	; 16
+ 136:	2d 91       	ld	r18, X+
+ 138:	3c 91       	ld	r19, X
+ 13a:	51 97       	sbiw	r26, 0x11	; 17
+ 13c:	52 96       	adiw	r26, 0x12	; 18
+ 13e:	8c 91       	ld	r24, X
+ 140:	52 97       	sbiw	r26, 0x12	; 18
+ 142:	e8 2f       	mov	r30, r24
+ 144:	f0 e0       	ldi	r31, 0x00	; 0
+ 146:	24 0f       	add	r18, r20
+ 148:	35 1f       	adc	r19, r21
+ 14a:	ee 0f       	add	r30, r30
+ 14c:	ff 1f       	adc	r31, r31
+ 14e:	e6 57       	subi	r30, 0x76	; 118
+ 150:	ff 4f       	sbci	r31, 0xFF	; 255
+ 152:	60 81       	ld	r22, Z
+ 154:	71 81       	ldd	r23, Z+1	; 0x01
+ 156:	26 1b       	sub	r18, r22
+ 158:	37 0b       	sbc	r19, r23
+ 15a:	51 96       	adiw	r26, 0x11	; 17
+ 15c:	3c 93       	st	X, r19
+ 15e:	2e 93       	st	-X, r18
+ 160:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 162:	51 83       	std	Z+1, r21	; 0x01
+ 164:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1u) % cyclesAveragedIR);
+ 166:	8f 5f       	subi	r24, 0xFF	; 255
+ 168:	87 70       	andi	r24, 0x07	; 7
+ 16a:	52 96       	adiw	r26, 0x12	; 18
+ 16c:	8c 93       	st	X, r24
+			// Far LED is on, we just did an off reading, we are doing another off reading now which will be discarded
+			if (running)
+			{
+				nearData.addReading(adcVal);
+			}
+			PORTB |= BITVAL(PortBFarLedBit);		// turn far LED on
+ 16e:	c0 9a       	sbi	0x18, 0	; 24
+			break;
+	}
+	++tickCounter;
+ 170:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <tickCounter>
+ 174:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <tickCounter+0x1>
+ 178:	01 96       	adiw	r24, 0x01	; 1
+ 17a:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <tickCounter+0x1>
+ 17e:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <tickCounter>
+}
+ 182:	ff 91       	pop	r31
+ 184:	ef 91       	pop	r30
+ 186:	bf 91       	pop	r27
+ 188:	af 91       	pop	r26
+ 18a:	9f 91       	pop	r25
+ 18c:	8f 91       	pop	r24
+ 18e:	7f 91       	pop	r23
+ 190:	6f 91       	pop	r22
+ 192:	5f 91       	pop	r21
+ 194:	4f 91       	pop	r20
+ 196:	3f 91       	pop	r19
+ 198:	2f 91       	pop	r18
+ 19a:	0f 90       	pop	r0
+ 19c:	0f be       	out	0x3f, r0	; 63
+ 19e:	0f 90       	pop	r0
+ 1a0:	1f 90       	pop	r1
+ 1a2:	18 95       	reti
+
+000001a4 <_Z10DelayTicksj>:
+
+// Get the tick counter from outside the ISR. As it's more than 8 bits long, we need to disable interrupts while fetching it.
+inline uint16_t GetTicks()
+writes(volatile)
+{
+	cli();
+ 1a4:	f8 94       	cli
+	uint16_t ticks = tickCounter;
+ 1a6:	40 91 62 00 	lds	r20, 0x0062	; 0x800062 <tickCounter>
+ 1aa:	50 91 63 00 	lds	r21, 0x0063	; 0x800063 <tickCounter+0x1>
+	sei();
+ 1ae:	78 94       	sei
+// Check whether we need to kick the watchdog
+inline void KickWatchdog()
+writes(volatile)
+{
+#ifndef __ECV__
+	wdt_reset();											// kick the watchdog
+ 1b0:	a8 95       	wdr
+
+// Get the tick counter from outside the ISR. As it's more than 8 bits long, we need to disable interrupts while fetching it.
+inline uint16_t GetTicks()
+writes(volatile)
+{
+	cli();
+ 1b2:	f8 94       	cli
+	uint16_t ticks = tickCounter;
+ 1b4:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <tickCounter>
+ 1b8:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <tickCounter+0x1>
+	sei();
+ 1bc:	78 94       	sei
+// Delay for a specified number of ticks, keeping the watchdog happy
+void DelayTicks(uint16_t ticks)
+writes(volatile)
+{
+	const uint16_t startTicks = GetTicks();
+	do 
+ 1be:	24 1b       	sub	r18, r20
+ 1c0:	35 0b       	sbc	r19, r21
+ 1c2:	28 17       	cp	r18, r24
+ 1c4:	39 07       	cpc	r19, r25
+ 1c6:	a0 f3       	brcs	.-24     	; 0x1b0 <_Z10DelayTicksj+0xc>
+	{
+		KickWatchdog();
+	} while (GetTicks() - startTicks < ticks);
+}
+ 1c8:	08 95       	ret
+
+000001ca <_ZN6IrData4initEv>:
+	return 0;												// to keep gcc happy
+}
+
+// Initialize the IR data structure
+void IrData::init()
+{
+ 1ca:	fc 01       	movw	r30, r24
+ 1cc:	9c 01       	movw	r18, r24
+ 1ce:	20 5f       	subi	r18, 0xF0	; 240
+ 1d0:	3f 4f       	sbci	r19, 0xFF	; 255
+	writes(i; *this; volatile)
+	keep(i <= cyclesAveragedIR)
+	keep(forall j in 0..(i-1) :- readings[j] == 0)
+	decrease(cyclesAveragedIR - i)
+	{
+		readings[i] = 0;
+ 1d2:	11 92       	st	Z+, r1
+ 1d4:	11 92       	st	Z+, r1
+}
+
+// Initialize the IR data structure
+void IrData::init()
+{
+	for (uint8_t i = 0; i < cyclesAveragedIR; ++i)
+ 1d6:	e2 17       	cp	r30, r18
+ 1d8:	f3 07       	cpc	r31, r19
+ 1da:	d9 f7       	brne	.-10     	; 0x1d2 <_ZN6IrData4initEv+0x8>
+	keep(forall j in 0..(i-1) :- readings[j] == 0)
+	decrease(cyclesAveragedIR - i)
+	{
+		readings[i] = 0;
+	}
+	index = 0;
+ 1dc:	fc 01       	movw	r30, r24
+ 1de:	12 8a       	std	Z+18, r1	; 0x12
+	sum = 0;
+ 1e0:	11 8a       	std	Z+17, r1	; 0x11
+ 1e2:	10 8a       	std	Z+16, r1	; 0x10
+ 1e4:	08 95       	ret
+
+000001e6 <_Z12initIRsensorv>:
+
+// Initialize the IR sensor
+void initIRsensor()
+writes(running; nearData; farData; offData; digitalOutput; volatile)
+post(!running)
+{
+ 1e6:	cf 93       	push	r28
+	running = false;
+ 1e8:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+	nearData.init();
+ 1ec:	8a e8       	ldi	r24, 0x8A	; 138
+ 1ee:	90 e0       	ldi	r25, 0x00	; 0
+ 1f0:	ec df       	rcall	.-40     	; 0x1ca <_ZN6IrData4initEv>
+	farData.init();
+ 1f2:	87 e7       	ldi	r24, 0x77	; 119
+ 1f4:	90 e0       	ldi	r25, 0x00	; 0
+ 1f6:	e9 df       	rcall	.-46     	; 0x1ca <_ZN6IrData4initEv>
+	offData.init();
+ 1f8:	84 e6       	ldi	r24, 0x64	; 100
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	e6 df       	rcall	.-52     	; 0x1ca <_ZN6IrData4initEv>
+
+	cli();
+ 1fe:	f8 94       	cli
+	// Set up timer 1 in mode 2 (CTC mode)
+	GTCCR = 0;
+ 200:	1c bc       	out	0x2c, r1	; 44
+	TCCR0A = BITVAL(WGM01);									// no direct outputs, mode 2
+ 202:	82 e0       	ldi	r24, 0x02	; 2
+ 204:	8a bd       	out	0x2a, r24	; 42
+	TCCR0B = 0;												// set the mode, clock stopped for now
+ 206:	13 be       	out	0x33, r1	; 51
+	TCNT0 = 0;
+ 208:	12 be       	out	0x32, r1	; 50
+	OCR0A = baseTopIR;
+ 20a:	8c e7       	ldi	r24, 0x7C	; 124
+ 20c:	89 bd       	out	0x29, r24	; 41
+	OCR0B = 0;
+ 20e:	18 bc       	out	0x28, r1	; 40
+	TIFR = BITVAL(OCF0B);									// clear any pending interrupt
+ 210:	88 e0       	ldi	r24, 0x08	; 8
+ 212:	88 bf       	out	0x38, r24	; 56
+	TIMSK = BITVAL(OCIE0B);									// enable the timer 0 compare match B interrupt
+ 214:	89 bf       	out	0x39, r24	; 57
+	TCCR0B |= BITVAL(CS01);									// start the clock, prescaler = 8
+ 216:	83 b7       	in	r24, 0x33	; 51
+ 218:	82 60       	ori	r24, 0x02	; 2
+ 21a:	83 bf       	out	0x33, r24	; 51
+	
+	ADMUX = (uint8_t)AdcPortBDuet3K6OutputChan;				// select the 10K resistor output bit, single ended mode
+ 21c:	c1 e0       	ldi	r28, 0x01	; 1
+ 21e:	c7 b9       	out	0x07, r28	; 7
+	ADCSRA = BITVAL(ADEN) | BITVAL(ADPS2) | BITVAL(ADATE) | BITVAL(ADPS1);	// enable ADC, auto trigger enable, prescaler = 64 (ADC clock ~= 125kHz)
+ 220:	86 ea       	ldi	r24, 0xA6	; 166
+ 222:	86 b9       	out	0x06, r24	; 6
+	ADCSRB = BITVAL(ADTS2) | BITVAL(ADTS0);					// start conversion on timer 0 compare match B, unipolar input mode
+ 224:	85 e0       	ldi	r24, 0x05	; 5
+ 226:	83 b9       	out	0x03, r24	; 3
+	tickCounter = 0;
+ 228:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <tickCounter+0x1>
+ 22c:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <tickCounter>
+	sei();
+ 230:	78 94       	sei
+// Give a G31 reading of about 0
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB &= ~BITVAL(PortBDuet3K0OutputBit);
+ 232:	c3 98       	cbi	0x18, 3	; 24
+	PORTB &= ~BITVAL(PortBDuet3K6OutputBit);
+ 234:	c2 98       	cbi	0x18, 2	; 24
+	// We do this by checking to see whether the connected electronics provided a pullup resistor on the output.
+	// If a pullup resistor is detected, we provide a digital output, else we provide an analog output.
+	// Wait a while before we do this test, so that Duet firmware has a chance to turn the internal pullup (50K to 150K) off,
+	// and Arduino/RAMPS firmware has a chance to turn the internal pullup (20K to 50K) on.
+	SetOutputOff();
+	DDRB &= ~BITVAL(PortBDuet3K6OutputBit);						// set the pin to an input, pullup disabled because output is off
+ 236:	ba 98       	cbi	0x17, 2	; 23
+	
+	DelayTicks(4u);
+ 238:	84 e0       	ldi	r24, 0x04	; 4
+ 23a:	90 e0       	ldi	r25, 0x00	; 0
+ 23c:	b3 df       	rcall	.-154    	; 0x1a4 <_Z10DelayTicksj>
+	running = true;												// start collecting readings
+ 23e:	c0 93 60 00 	sts	0x0060, r28	; 0x800060 <_edata>
+		sei();
+		inProgrammingSeq = totalSum <= cyclesAveragedIR * 50u * 3u;	// see if output low after 3 seconds
+	}
+	DelayTicks(2u * interruptFreq);
+#else
+	DelayTicks(5u * interruptFreq);								// wait 5 seconds
+ 242:	80 e4       	ldi	r24, 0x40	; 64
+ 244:	9c e9       	ldi	r25, 0x9C	; 156
+ 246:	ae df       	rcall	.-164    	; 0x1a4 <_Z10DelayTicksj>
+#endif
+	running = false;											// stop collecting readings
+ 248:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+	
+	// Change back to normal operation mode
+	ADMUX = (uint8_t)AdcPhototransistorChan | (1 << REFS1);		// select ADC input from phototransistor, single ended mode, 1.1V reference
+ 24c:	82 e8       	ldi	r24, 0x82	; 130
+ 24e:	87 b9       	out	0x07, r24	; 7
+	DDRB |= BITVAL(PortBDuet3K6OutputBit);						// set the pin back to being an output
+ 250:	ba 9a       	sbi	0x17, 2	; 23
+			nvData.nearMultiplier = nvData.farMultiplier = 1000;
+			++flashesToGo;										// extra flash to indicate not calibrated
+		}	
+	}
+#else
+	const uint16_t totalSum = offData.sum + nearData.sum + farData.sum;
+ 252:	40 91 74 00 	lds	r20, 0x0074	; 0x800074 <offData+0x10>
+ 256:	50 91 75 00 	lds	r21, 0x0075	; 0x800075 <offData+0x11>
+ 25a:	80 91 9a 00 	lds	r24, 0x009A	; 0x80009a <nearData+0x10>
+ 25e:	90 91 9b 00 	lds	r25, 0x009B	; 0x80009b <nearData+0x11>
+ 262:	20 91 87 00 	lds	r18, 0x0087	; 0x800087 <farData+0x10>
+ 266:	30 91 88 00 	lds	r19, 0x0088	; 0x800088 <farData+0x11>
+ 26a:	84 0f       	add	r24, r20
+ 26c:	95 1f       	adc	r25, r21
+ 26e:	82 0f       	add	r24, r18
+ 270:	93 1f       	adc	r25, r19
+	digitalOutput = totalSum >= (3000UL * cyclesAveragedIR * 1024UL * 3u)/(160000UL + 3000UL);
+ 272:	21 e0       	ldi	r18, 0x01	; 1
+ 274:	84 3c       	cpi	r24, 0xC4	; 196
+ 276:	31 e0       	ldi	r19, 0x01	; 1
+ 278:	93 07       	cpc	r25, r19
+ 27a:	08 f4       	brcc	.+2      	; 0x27e <_Z12initIRsensorv+0x98>
+ 27c:	20 e0       	ldi	r18, 0x00	; 0
+ 27e:	20 93 61 00 	sts	0x0061, r18	; 0x800061 <digitalOutput>
+	uint8_t flashesToGo = (digitalOutput) ? 2u : 4u;
+ 282:	84 3c       	cpi	r24, 0xC4	; 196
+ 284:	91 40       	sbci	r25, 0x01	; 1
+ 286:	70 f4       	brcc	.+28     	; 0x2a4 <_Z12initIRsensorv+0xbe>
+ 288:	c4 e0       	ldi	r28, 0x04	; 4
+// Give a G31 reading of about 1023 indicating that the sensor is saturating
+inline void SetOutputSaturated()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB |= BITVAL(PortBDuet3K0OutputBit);
+ 28a:	c3 9a       	sbi	0x18, 3	; 24
+	PORTB |= BITVAL(PortBDuet3K6OutputBit);
+ 28c:	c2 9a       	sbi	0x18, 2	; 24
+	
+	// Flash the LED the appropriate number of times
+	while (flashesToGo != 0u)
+	{
+		SetOutputSaturated();									// turn LED on
+		DelayTicks(ledFlashTime);
+ 28e:	85 e3       	ldi	r24, 0x35	; 53
+ 290:	95 e0       	ldi	r25, 0x05	; 5
+ 292:	88 df       	rcall	.-240    	; 0x1a4 <_Z10DelayTicksj>
+// Give a G31 reading of about 0
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB &= ~BITVAL(PortBDuet3K0OutputBit);
+ 294:	c3 98       	cbi	0x18, 3	; 24
+	PORTB &= ~BITVAL(PortBDuet3K6OutputBit);
+ 296:	c2 98       	cbi	0x18, 2	; 24
+	while (flashesToGo != 0u)
+	{
+		SetOutputSaturated();									// turn LED on
+		DelayTicks(ledFlashTime);
+		SetOutputOff();											// turn LED off
+		DelayTicks(ledFlashTime);
+ 298:	85 e3       	ldi	r24, 0x35	; 53
+ 29a:	95 e0       	ldi	r25, 0x05	; 5
+ 29c:	83 df       	rcall	.-250    	; 0x1a4 <_Z10DelayTicksj>
+		--flashesToGo;
+ 29e:	c1 50       	subi	r28, 0x01	; 1
+	digitalOutput = totalSum >= (3000UL * cyclesAveragedIR * 1024UL * 3u)/(160000UL + 3000UL);
+	uint8_t flashesToGo = (digitalOutput) ? 2u : 4u;
+#endif
+	
+	// Flash the LED the appropriate number of times
+	while (flashesToGo != 0u)
+ 2a0:	a1 f7       	brne	.-24     	; 0x28a <_Z12initIRsensorv+0xa4>
+ 2a2:	02 c0       	rjmp	.+4      	; 0x2a8 <_Z12initIRsensorv+0xc2>
+		}	
+	}
+#else
+	const uint16_t totalSum = offData.sum + nearData.sum + farData.sum;
+	digitalOutput = totalSum >= (3000UL * cyclesAveragedIR * 1024UL * 3u)/(160000UL + 3000UL);
+	uint8_t flashesToGo = (digitalOutput) ? 2u : 4u;
+ 2a4:	c2 e0       	ldi	r28, 0x02	; 2
+ 2a6:	f1 cf       	rjmp	.-30     	; 0x28a <_Z12initIRsensorv+0xa4>
+		DelayTicks(ledFlashTime);
+		SetOutputOff();											// turn LED off
+		DelayTicks(ledFlashTime);
+		--flashesToGo;
+	}
+}
+ 2a8:	cf 91       	pop	r28
+ 2aa:	08 95       	ret
+
+000002ac <_Z11runIRsensorv>:
+void runIRsensor()
+writes(nearData; farData; offData; digitalOutput; volatile)
+pre(!running)
+{
+	// Clear out the data and start collecting data from the phototransistor
+	nearData.init();
+ 2ac:	8a e8       	ldi	r24, 0x8A	; 138
+ 2ae:	90 e0       	ldi	r25, 0x00	; 0
+ 2b0:	8c df       	rcall	.-232    	; 0x1ca <_ZN6IrData4initEv>
+	farData.init();
+ 2b2:	87 e7       	ldi	r24, 0x77	; 119
+ 2b4:	90 e0       	ldi	r25, 0x00	; 0
+ 2b6:	89 df       	rcall	.-238    	; 0x1ca <_ZN6IrData4initEv>
+	offData.init();
+ 2b8:	84 e6       	ldi	r24, 0x64	; 100
+ 2ba:	90 e0       	ldi	r25, 0x00	; 0
+ 2bc:	86 df       	rcall	.-244    	; 0x1ca <_ZN6IrData4initEv>
+
+	running = true;											// tell interrupt handler to collect readings
+ 2be:	81 e0       	ldi	r24, 0x01	; 1
+ 2c0:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+	DelayTicks(4u * cyclesAveragedIR + 2);					// wait until we have a full set of readings
+ 2c4:	82 e2       	ldi	r24, 0x22	; 34
+ 2c6:	90 e0       	ldi	r25, 0x00	; 0
+ 2c8:	6d df       	rcall	.-294    	; 0x1a4 <_Z10DelayTicksj>
+	// Start normal operation
+	for (;;)
+	keep(nearData.invar(); farData.invar(); offData.invar())
+	{
+		cli();
+		const uint16_t locNearSum = nearData.sum;
+ 2ca:	0f 2e       	mov	r0, r31
+ 2cc:	fa e8       	ldi	r31, 0x8A	; 138
+ 2ce:	ef 2e       	mov	r14, r31
+ 2d0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d2:	ff 2e       	mov	r15, r31
+ 2d4:	f0 2d       	mov	r31, r0
+		const uint16_t locFarSum = farData.sum;
+ 2d6:	07 e7       	ldi	r16, 0x77	; 119
+ 2d8:	10 e0       	ldi	r17, 0x00	; 0
+		const uint16_t locOffSum = offData.sum;
+ 2da:	c4 e6       	ldi	r28, 0x64	; 100
+ 2dc:	d0 e0       	ldi	r29, 0x00	; 0
+			{
+#if SUPPORT_CALIBRATION
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) * nvData.nearMultiplier : 0;
+				const uint32_t adjFarSum = (locFarSum > locOffSum) ? (uint32_t)(locFarSum - locOffSum) * nvData.farMultiplier : 0;
+#else
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) : 0;
+ 2de:	a1 2c       	mov	r10, r1
+ 2e0:	b1 2c       	mov	r11, r1
+ 2e2:	c1 2c       	mov	r12, r1
+ 2e4:	d1 2c       	mov	r13, r1
+
+	// Start normal operation
+	for (;;)
+	keep(nearData.invar(); farData.invar(); offData.invar())
+	{
+		cli();
+ 2e6:	f8 94       	cli
+		const uint16_t locNearSum = nearData.sum;
+ 2e8:	f7 01       	movw	r30, r14
+ 2ea:	80 89       	ldd	r24, Z+16	; 0x10
+ 2ec:	91 89       	ldd	r25, Z+17	; 0x11
+		const uint16_t locFarSum = farData.sum;
+ 2ee:	f8 01       	movw	r30, r16
+ 2f0:	20 89       	ldd	r18, Z+16	; 0x10
+ 2f2:	31 89       	ldd	r19, Z+17	; 0x11
+		const uint16_t locOffSum = offData.sum;
+ 2f4:	48 89       	ldd	r20, Y+16	; 0x10
+ 2f6:	59 89       	ldd	r21, Y+17	; 0x11
+		sei();
+ 2f8:	78 94       	sei
+		
+		// See if we need to switch the sensitivity range
+		const bool highSense = (ADMUX & (1 << REFS1)) != 0;
+		if (highSense && (locNearSum >= rangeUpThreshold * cyclesAveragedIR || locFarSum >= rangeUpThreshold * cyclesAveragedIR))
+ 2fa:	3f 9b       	sbis	0x07, 7	; 7
+ 2fc:	0d c0       	rjmp	.+26     	; 0x318 <_Z11runIRsensorv+0x6c>
+ 2fe:	80 3e       	cpi	r24, 0xE0	; 224
+ 300:	f5 e1       	ldi	r31, 0x15	; 21
+ 302:	9f 07       	cpc	r25, r31
+ 304:	20 f4       	brcc	.+8      	; 0x30e <_Z11runIRsensorv+0x62>
+ 306:	20 3e       	cpi	r18, 0xE0	; 224
+ 308:	65 e1       	ldi	r22, 0x15	; 21
+ 30a:	36 07       	cpc	r19, r22
+ 30c:	90 f0       	brcs	.+36     	; 0x332 <_Z11runIRsensorv+0x86>
+		{
+			ADMUX &= ~(1 << REFS1);							// switch to low sensitivity (voltage reference is VCC)
+ 30e:	3f 98       	cbi	0x07, 7	; 7
+#if RANGE_DEBUG
+			SetOutputOn();									// so we can see when it changes range
+#endif
+			DelayTicks(4 * cyclesAveragedIR + 3);
+ 310:	83 e2       	ldi	r24, 0x23	; 35
+ 312:	90 e0       	ldi	r25, 0x00	; 0
+ 314:	47 df       	rcall	.-370    	; 0x1a4 <_Z10DelayTicksj>
+ 316:	49 c0       	rjmp	.+146    	; 0x3aa <_Z11runIRsensorv+0xfe>
+		}
+		else if (!highSense && locNearSum < rangeDownThreshold * cyclesAveragedIR && locFarSum < rangeDownThreshold * cyclesAveragedIR)
+ 318:	80 3c       	cpi	r24, 0xC0	; 192
+ 31a:	e3 e0       	ldi	r30, 0x03	; 3
+ 31c:	9e 07       	cpc	r25, r30
+ 31e:	48 f4       	brcc	.+18     	; 0x332 <_Z11runIRsensorv+0x86>
+ 320:	20 3c       	cpi	r18, 0xC0	; 192
+ 322:	f3 e0       	ldi	r31, 0x03	; 3
+ 324:	3f 07       	cpc	r19, r31
+ 326:	28 f4       	brcc	.+10     	; 0x332 <_Z11runIRsensorv+0x86>
+		{
+			ADMUX |= (1 << REFS1);							// switch to high sensitivity (voltage reference is 1.1V)
+ 328:	3f 9a       	sbi	0x07, 7	; 7
+#if RANGE_DEBUG
+			SetOutputOn();									// so we can see when it changes range
+#endif
+			DelayTicks(4 * cyclesAveragedIR + 3);
+ 32a:	83 e2       	ldi	r24, 0x23	; 35
+ 32c:	90 e0       	ldi	r25, 0x00	; 0
+ 32e:	3a df       	rcall	.-396    	; 0x1a4 <_Z10DelayTicksj>
+ 330:	3c c0       	rjmp	.+120    	; 0x3aa <_Z11runIRsensorv+0xfe>
+#if SUPPORT_CALIBRATION
+								(nvData.nearMultiplier >= nvData.farMultiplier)
+									? (locFarSum >= saturatedThreshold && (uint32_t)locNearSum * nvData.nearMultiplier > (uint32_t)saturatedThreshold * nvData.farMultiplier)
+									: (locNearSum >= saturatedThreshold && (uint32_t)locFarSum * nvData.farMultiplier > (uint32_t)saturatedThreshold * nvData.nearMultiplier);
+#else
+								locFarSum >= saturatedThreshold && locNearSum > saturatedThreshold;
+ 332:	20 33       	cpi	r18, 0x30	; 48
+ 334:	6b e1       	ldi	r22, 0x1B	; 27
+ 336:	36 07       	cpc	r19, r22
+ 338:	08 f4       	brcc	.+2      	; 0x33c <_Z11runIRsensorv+0x90>
+ 33a:	42 c0       	rjmp	.+132    	; 0x3c0 <_Z11runIRsensorv+0x114>
+ 33c:	81 33       	cpi	r24, 0x31	; 49
+ 33e:	eb e1       	ldi	r30, 0x1B	; 27
+ 340:	9e 07       	cpc	r25, r30
+ 342:	a8 f5       	brcc	.+106    	; 0x3ae <_Z11runIRsensorv+0x102>
+ 344:	3d c0       	rjmp	.+122    	; 0x3c0 <_Z11runIRsensorv+0x114>
+// Give a G31 reading of about 0
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB &= ~BITVAL(PortBDuet3K0OutputBit);
+ 346:	c3 98       	cbi	0x18, 3	; 24
+	PORTB &= ~BITVAL(PortBDuet3K6OutputBit);
+ 348:	c2 98       	cbi	0x18, 2	; 24
+ 34a:	2f c0       	rjmp	.+94     	; 0x3aa <_Z11runIRsensorv+0xfe>
+// Give a G31 reading of about 1023 indicating that the sensor is saturating
+inline void SetOutputSaturated()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB |= BITVAL(PortBDuet3K0OutputBit);
+ 34c:	c3 9a       	sbi	0x18, 3	; 24
+	PORTB |= BITVAL(PortBDuet3K6OutputBit);
+ 34e:	c2 9a       	sbi	0x18, 2	; 24
+ 350:	2c c0       	rjmp	.+88     	; 0x3aa <_Z11runIRsensorv+0xfe>
+			{
+#if SUPPORT_CALIBRATION
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) * nvData.nearMultiplier : 0;
+				const uint32_t adjFarSum = (locFarSum > locOffSum) ? (uint32_t)(locFarSum - locOffSum) * nvData.farMultiplier : 0;
+#else
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) : 0;
+ 352:	84 1b       	sub	r24, r20
+ 354:	95 0b       	sbc	r25, r21
+ 356:	a0 e0       	ldi	r26, 0x00	; 0
+ 358:	b0 e0       	ldi	r27, 0x00	; 0
+				const uint32_t adjFarSum = (locFarSum > locOffSum) ? (uint32_t)(locFarSum - locOffSum) : 0;
+ 35a:	42 17       	cp	r20, r18
+ 35c:	53 07       	cpc	r21, r19
+ 35e:	18 f5       	brcc	.+70     	; 0x3a6 <_Z11runIRsensorv+0xfa>
+ 360:	24 1b       	sub	r18, r20
+ 362:	35 0b       	sbc	r19, r21
+ 364:	a9 01       	movw	r20, r18
+ 366:	60 e0       	ldi	r22, 0x00	; 0
+ 368:	70 e0       	ldi	r23, 0x00	; 0
+#endif
+				const bool readingsOk = locFarSum > locOffSum && locFarSum - locOffSum >= farThreshold;
+ 36a:	20 35       	cpi	r18, 0x50	; 80
+ 36c:	31 05       	cpc	r19, r1
+ 36e:	d8 f0       	brcs	.+54     	; 0x3a6 <_Z11runIRsensorv+0xfa>
+			
+				if (readingsOk && adjNearSum >= adjFarSum)
+ 370:	84 17       	cp	r24, r20
+ 372:	95 07       	cpc	r25, r21
+ 374:	a6 07       	cpc	r26, r22
+ 376:	b7 07       	cpc	r27, r23
+ 378:	58 f1       	brcs	.+86     	; 0x3d0 <_Z11runIRsensorv+0x124>
+				{
+					if (digitalOutput)
+ 37a:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <digitalOutput>
+ 37e:	88 23       	and	r24, r24
+ 380:	19 f0       	breq	.+6      	; 0x388 <_Z11runIRsensorv+0xdc>
+// Give a G31 reading of about 1023 indicating that the sensor is saturating
+inline void SetOutputSaturated()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB |= BITVAL(PortBDuet3K0OutputBit);
+ 382:	c3 9a       	sbi	0x18, 3	; 24
+	PORTB |= BITVAL(PortBDuet3K6OutputBit);
+ 384:	c2 9a       	sbi	0x18, 2	; 24
+ 386:	11 c0       	rjmp	.+34     	; 0x3aa <_Z11runIRsensorv+0xfe>
+// Give a G31 reading of about 578 indicating we are at/past the trigger point
+inline void SetOutputOn()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB |= BITVAL(PortBDuet3K0OutputBit);
+ 388:	c3 9a       	sbi	0x18, 3	; 24
+	PORTB &= ~BITVAL(PortBDuet3K6OutputBit);
+ 38a:	c2 98       	cbi	0x18, 2	; 24
+ 38c:	0e c0       	rjmp	.+28     	; 0x3aa <_Z11runIRsensorv+0xfe>
+					else
+					{
+						SetOutputOn();					
+					}
+				}
+				else if (!digitalOutput && readingsOk && adjNearSum * 2 >= adjFarSum)
+ 38e:	88 0f       	add	r24, r24
+ 390:	99 1f       	adc	r25, r25
+ 392:	aa 1f       	adc	r26, r26
+ 394:	bb 1f       	adc	r27, r27
+ 396:	84 17       	cp	r24, r20
+ 398:	95 07       	cpc	r25, r21
+ 39a:	a6 07       	cpc	r26, r22
+ 39c:	b7 07       	cpc	r27, r23
+ 39e:	18 f0       	brcs	.+6      	; 0x3a6 <_Z11runIRsensorv+0xfa>
+// Give a G31 reading of about 445 indicating we are approaching the trigger point
+inline void SetOutputApproaching()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB &= ~BITVAL(PortBDuet3K0OutputBit);
+ 3a0:	c3 98       	cbi	0x18, 3	; 24
+	PORTB |= BITVAL(PortBDuet3K6OutputBit);
+ 3a2:	c2 9a       	sbi	0x18, 2	; 24
+ 3a4:	02 c0       	rjmp	.+4      	; 0x3aa <_Z11runIRsensorv+0xfe>
+// Give a G31 reading of about 0
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+	PORTB &= ~BITVAL(PortBDuet3K0OutputBit);
+ 3a6:	c3 98       	cbi	0x18, 3	; 24
+	PORTB &= ~BITVAL(PortBDuet3K6OutputBit);
+ 3a8:	c2 98       	cbi	0x18, 2	; 24
+// Check whether we need to kick the watchdog
+inline void KickWatchdog()
+writes(volatile)
+{
+#ifndef __ECV__
+	wdt_reset();											// kick the watchdog
+ 3aa:	a8 95       	wdr
+ 3ac:	9c cf       	rjmp	.-200    	; 0x2e6 <_Z11runIRsensorv+0x3a>
+
+// Get the tick counter from outside the ISR. As it's more than 8 bits long, we need to disable interrupts while fetching it.
+inline uint16_t GetTicks()
+writes(volatile)
+{
+	cli();
+ 3ae:	f8 94       	cli
+	uint16_t ticks = tickCounter;
+ 3b0:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <tickCounter>
+ 3b4:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <tickCounter+0x1>
+	sei();
+ 3b8:	78 94       	sei
+								locFarSum >= saturatedThreshold && locNearSum > saturatedThreshold;
+#endif
+			if (saturated)
+			{
+				// Sensor is saturating. We flash the LED rapidly to indicate this.
+				if ((GetTicks() & (1 << 9)) != 0)
+ 3ba:	91 fd       	sbrc	r25, 1
+ 3bc:	c4 cf       	rjmp	.-120    	; 0x346 <_Z11runIRsensorv+0x9a>
+ 3be:	c6 cf       	rjmp	.-116    	; 0x34c <_Z11runIRsensorv+0xa0>
+			{
+#if SUPPORT_CALIBRATION
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) * nvData.nearMultiplier : 0;
+				const uint32_t adjFarSum = (locFarSum > locOffSum) ? (uint32_t)(locFarSum - locOffSum) * nvData.farMultiplier : 0;
+#else
+				const uint32_t adjNearSum =  (locNearSum > locOffSum) ? (uint32_t)(locNearSum - locOffSum) : 0;
+ 3c0:	48 17       	cp	r20, r24
+ 3c2:	59 07       	cpc	r21, r25
+ 3c4:	30 f2       	brcs	.-116    	; 0x352 <_Z11runIRsensorv+0xa6>
+ 3c6:	8a 2d       	mov	r24, r10
+ 3c8:	9b 2d       	mov	r25, r11
+ 3ca:	ac 2d       	mov	r26, r12
+ 3cc:	bd 2d       	mov	r27, r13
+ 3ce:	c5 cf       	rjmp	.-118    	; 0x35a <_Z11runIRsensorv+0xae>
+					else
+					{
+						SetOutputOn();					
+					}
+				}
+				else if (!digitalOutput && readingsOk && adjNearSum * 2 >= adjFarSum)
+ 3d0:	20 91 61 00 	lds	r18, 0x0061	; 0x800061 <digitalOutput>
+ 3d4:	21 11       	cpse	r18, r1
+ 3d6:	e7 cf       	rjmp	.-50     	; 0x3a6 <_Z11runIRsensorv+0xfa>
+ 3d8:	da cf       	rjmp	.-76     	; 0x38e <_Z11runIRsensorv+0xe2>
+
+000003da <main>:
+int main(void)
+writes(volatile)
+writes(digitalOutput)
+writes(nearData; farData; offData)	// IR variables
+{
+	cli();
+ 3da:	f8 94       	cli
+	DIDR0 = BITVAL(AdcPhototransistorChan) | BITVAL(PortBDuet3K6OutputBit);	// disable digital input buffers on ADC inputs
+ 3dc:	84 e0       	ldi	r24, 0x04	; 4
+ 3de:	84 bb       	out	0x14, r24	; 20
+
+	// Set ports and pullup resistors
+	PORTB = PortBUnusedBitMask;								// enable pullup on unused I/O pins
+ 3e0:	18 ba       	out	0x18, r1	; 24
+	
+	// Enable outputs
+	DDRB = BITVAL(PortBNearLedBit) | BITVAL(PortBFarLedBit) | BITVAL(PortBDuet3K0OutputBit) | BITVAL(PortBDuet3K6OutputBit);
+ 3e2:	8f e0       	ldi	r24, 0x0F	; 15
+ 3e4:	87 bb       	out	0x17, r24	; 23
+	
+	sei();
+ 3e6:	78 94       	sei
+				: "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+						_BV(WDE) | (value & 0x07)) )
+				: "r0"
+		);
+ 3e8:	9d e0       	ldi	r25, 0x0D	; 13
+ 3ea:	88 e1       	ldi	r24, 0x18	; 24
+ 3ec:	0f b6       	in	r0, 0x3f	; 63
+ 3ee:	f8 94       	cli
+ 3f0:	a8 95       	wdr
+ 3f2:	81 bd       	out	0x21, r24	; 33
+ 3f4:	0f be       	out	0x3f, r0	; 63
+ 3f6:	91 bd       	out	0x21, r25	; 33
+
+#ifndef __ECV__												// eCv++ doesn't understand gcc assembler syntax
+	wdt_enable(WDTO_500MS);									// enable the watchdog	
+#endif
+
+	initIRsensor();
+ 3f8:	f6 de       	rcall	.-532    	; 0x1e6 <_Z12initIRsensorv>
+	runIRsensor();											// doesn't return
+ 3fa:	58 df       	rcall	.-336    	; 0x2ac <_Z11runIRsensorv>
+
+000003fc <_exit>:
+ 3fc:	f8 94       	cli
+
+000003fe <__stop_program>:
+ 3fe:	ff cf       	rjmp	.-2      	; 0x3fe <__stop_program>

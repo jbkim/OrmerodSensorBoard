@@ -1,0 +1,1489 @@
+
+OrmerodLedSensor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000724  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000007bb  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000090  00800060  00800060  000007b8  2**0
+                  ALLOC
+  3 .fuse         00000003  00820000  00820000  000007b8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .comment      00000030  00000000  00000000  000007bb  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007ec  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000050  00000000  00000000  00000828  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000d95  00000000  00000000  00000878  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000006b7  00000000  00000000  0000160d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000798  00000000  00000000  00001cc4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000000d4  00000000  00000000  0000245c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    0000088d  00000000  00000000  00002530  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000004d5  00000000  00000000  00002dbd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000058  00000000  00000000  00003292  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	20 c0       	rjmp	.+64     	; 0x42 <__ctors_end>
+   2:	2f c0       	rjmp	.+94     	; 0x62 <__bad_interrupt>
+   4:	2e c0       	rjmp	.+92     	; 0x62 <__bad_interrupt>
+   6:	2d c0       	rjmp	.+90     	; 0x62 <__bad_interrupt>
+   8:	2c c0       	rjmp	.+88     	; 0x62 <__bad_interrupt>
+   a:	2b c0       	rjmp	.+86     	; 0x62 <__bad_interrupt>
+   c:	2a c0       	rjmp	.+84     	; 0x62 <__bad_interrupt>
+   e:	2a c0       	rjmp	.+84     	; 0x64 <__vector_7>
+  10:	28 c0       	rjmp	.+80     	; 0x62 <__bad_interrupt>
+  12:	27 c0       	rjmp	.+78     	; 0x62 <__bad_interrupt>
+  14:	26 c0       	rjmp	.+76     	; 0x62 <__bad_interrupt>
+  16:	25 c0       	rjmp	.+74     	; 0x62 <__bad_interrupt>
+  18:	24 c0       	rjmp	.+72     	; 0x62 <__bad_interrupt>
+  1a:	23 c0       	rjmp	.+70     	; 0x62 <__bad_interrupt>
+  1c:	22 c0       	rjmp	.+68     	; 0x62 <__bad_interrupt>
+  1e:	21 c0       	rjmp	.+66     	; 0x62 <__bad_interrupt>
+  20:	20 c0       	rjmp	.+64     	; 0x62 <__bad_interrupt>
+  22:	46 c0       	rjmp	.+140    	; 0xb0 <__vector_7+0x4c>
+  24:	49 c0       	rjmp	.+146    	; 0xb8 <__vector_7+0x54>
+  26:	6d c0       	rjmp	.+218    	; 0x102 <__vector_7+0x9e>
+  28:	91 c0       	rjmp	.+290    	; 0x14c <__vector_7+0xe8>
+  2a:	42 c0       	rjmp	.+132    	; 0xb0 <__vector_7+0x4c>
+  2c:	45 c0       	rjmp	.+138    	; 0xb8 <__vector_7+0x54>
+  2e:	69 c0       	rjmp	.+210    	; 0x102 <__vector_7+0x9e>
+  30:	8d c0       	rjmp	.+282    	; 0x14c <__vector_7+0xe8>
+  32:	3e c0       	rjmp	.+124    	; 0xb0 <__vector_7+0x4c>
+  34:	41 c0       	rjmp	.+130    	; 0xb8 <__vector_7+0x54>
+  36:	b1 c0       	rjmp	.+354    	; 0x19a <__stack+0x3b>
+  38:	f2 c0       	rjmp	.+484    	; 0x21e <__stack+0xbf>
+  3a:	75 c1       	rjmp	.+746    	; 0x326 <__stack+0x1c7>
+  3c:	74 c1       	rjmp	.+744    	; 0x326 <__stack+0x1c7>
+  3e:	14 c1       	rjmp	.+552    	; 0x268 <__stack+0x109>
+  40:	16 c1       	rjmp	.+556    	; 0x26e <__stack+0x10f>
+
+00000042 <__ctors_end>:
+  42:	11 24       	eor	r1, r1
+  44:	1f be       	out	0x3f, r1	; 63
+  46:	cf e5       	ldi	r28, 0x5F	; 95
+  48:	d1 e0       	ldi	r29, 0x01	; 1
+  4a:	de bf       	out	0x3e, r29	; 62
+  4c:	cd bf       	out	0x3d, r28	; 61
+
+0000004e <__do_clear_bss>:
+  4e:	20 e0       	ldi	r18, 0x00	; 0
+  50:	a0 e6       	ldi	r26, 0x60	; 96
+  52:	b0 e0       	ldi	r27, 0x00	; 0
+  54:	01 c0       	rjmp	.+2      	; 0x58 <.do_clear_bss_start>
+
+00000056 <.do_clear_bss_loop>:
+  56:	1d 92       	st	X+, r1
+
+00000058 <.do_clear_bss_start>:
+  58:	a0 3f       	cpi	r26, 0xF0	; 240
+  5a:	b2 07       	cpc	r27, r18
+  5c:	e1 f7       	brne	.-8      	; 0x56 <.do_clear_bss_loop>
+  5e:	05 d3       	rcall	.+1546   	; 0x66a <main>
+  60:	5f c3       	rjmp	.+1726   	; 0x720 <_exit>
+
+00000062 <__bad_interrupt>:
+  62:	ce cf       	rjmp	.-100    	; 0x0 <__vectors>
+
+00000064 <__vector_7>:
+post(nearData.invar(); farData.invar(); offData.invar())
+post(thermistor1Data.invar())
+#if DUAL_NOZZLE
+post(thermistor2Data.invar())
+#endif
+{
+  64:	1f 92       	push	r1
+  66:	0f 92       	push	r0
+  68:	0f b6       	in	r0, 0x3f	; 63
+  6a:	0f 92       	push	r0
+  6c:	11 24       	eor	r1, r1
+  6e:	2f 93       	push	r18
+  70:	3f 93       	push	r19
+  72:	4f 93       	push	r20
+  74:	5f 93       	push	r21
+  76:	6f 93       	push	r22
+  78:	7f 93       	push	r23
+  7a:	8f 93       	push	r24
+  7c:	9f 93       	push	r25
+  7e:	af 93       	push	r26
+  80:	bf 93       	push	r27
+  82:	cf 93       	push	r28
+  84:	df 93       	push	r29
+  86:	ef 93       	push	r30
+  88:	ff 93       	push	r31
+#if ISR_DEBUG
+	PORTB |= BITVAL(PortBDebugPin);					// set debug pin high
+#endif
+
+	uint16_t adcVal = ADC & 1023u;					// get the ADC reading from the previous conversion
+  8a:	84 b1       	in	r24, 0x04	; 4
+  8c:	95 b1       	in	r25, 0x05	; 5
+  8e:	ac 01       	movw	r20, r24
+  90:	53 70       	andi	r21, 0x03	; 3
+	uint8_t locTickCounter = (uint8_t)tickCounter;
+  92:	20 91 61 00 	lds	r18, 0x0061	; 0x800061 <tickCounter>
+  96:	30 91 62 00 	lds	r19, 0x0062	; 0x800062 <tickCounter+0x1>
+	while (TCNT1 < 3 * 64) {}						// delay a little until the ADC s/h has taken effect. 3 ADC clocks should be enough, and 1 ADC clock is 64 of our clocks.
+  9a:	8c b5       	in	r24, 0x2c	; 44
+  9c:	9d b5       	in	r25, 0x2d	; 45
+  9e:	80 3c       	cpi	r24, 0xC0	; 192
+  a0:	91 05       	cpc	r25, r1
+  a2:	d8 f3       	brcs	.-10     	; 0x9a <__vector_7+0x36>
+	switch(locTickCounter & 0x0fu)
+  a4:	f9 01       	movw	r30, r18
+  a6:	ef 70       	andi	r30, 0x0F	; 15
+  a8:	ff 27       	eor	r31, r31
+  aa:	ef 5e       	subi	r30, 0xEF	; 239
+  ac:	ff 4f       	sbci	r31, 0xFF	; 255
+  ae:	09 94       	ijmp
+	{
+		case 0:
+		case 4:
+		case 8:
+			// Far LED is on, we just did a dummy off reading, we are doing a far reading now and an off reading next
+			PORTB &= ~PortBFarLedMask;				// turn far LED off
+  b0:	88 b3       	in	r24, 0x18	; 24
+  b2:	8c 7f       	andi	r24, 0xFC	; 252
+  b4:	88 bb       	out	0x18, r24	; 24
+			break;
+  b6:	37 c1       	rjmp	.+622    	; 0x326 <__stack+0x1c7>
+
+		case 1:
+		case 5:
+		case 9:
+			// LEDs are off, we just did a far reading, we are doing an off reading now and a near reading next			
+			if (running)
+  b8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+  bc:	88 23       	and	r24, r24
+  be:	f9 f0       	breq	.+62     	; 0xfe <__vector_7+0x9a>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+  c0:	aa ec       	ldi	r26, 0xCA	; 202
+  c2:	b0 e0       	ldi	r27, 0x00	; 0
+  c4:	50 96       	adiw	r26, 0x10	; 16
+  c6:	2d 91       	ld	r18, X+
+  c8:	3c 91       	ld	r19, X
+  ca:	51 97       	sbiw	r26, 0x11	; 17
+  cc:	52 96       	adiw	r26, 0x12	; 18
+  ce:	8c 91       	ld	r24, X
+  d0:	52 97       	sbiw	r26, 0x12	; 18
+  d2:	e8 2f       	mov	r30, r24
+  d4:	f0 e0       	ldi	r31, 0x00	; 0
+  d6:	24 0f       	add	r18, r20
+  d8:	35 1f       	adc	r19, r21
+  da:	ee 0f       	add	r30, r30
+  dc:	ff 1f       	adc	r31, r31
+  de:	e6 53       	subi	r30, 0x36	; 54
+  e0:	ff 4f       	sbci	r31, 0xFF	; 255
+  e2:	60 81       	ld	r22, Z
+  e4:	71 81       	ldd	r23, Z+1	; 0x01
+  e6:	26 1b       	sub	r18, r22
+  e8:	37 0b       	sbc	r19, r23
+  ea:	51 96       	adiw	r26, 0x11	; 17
+  ec:	3c 93       	st	X, r19
+  ee:	2e 93       	st	-X, r18
+  f0:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+  f2:	51 83       	std	Z+1, r21	; 0x01
+  f4:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1) % cyclesAveragedIR);
+  f6:	8f 5f       	subi	r24, 0xFF	; 255
+  f8:	87 70       	andi	r24, 0x07	; 7
+  fa:	52 96       	adiw	r26, 0x12	; 18
+  fc:	8c 93       	st	X, r24
+			// LEDs are off, we just did a far reading, we are doing an off reading now and a near reading next			
+			if (running)
+			{
+				farData.addReading(adcVal);
+			}
+			PORTA |= BITVAL(PortANearLedBit);		// turn near LED on
+  fe:	de 9a       	sbi	0x1b, 6	; 27
+			break;
+ 100:	12 c1       	rjmp	.+548    	; 0x326 <__stack+0x1c7>
+
+		case 2:
+		case 6:
+			// Near LED is on, we just did a, off reading, we are doing a near reading now and a dummy off reading next
+			if (running)
+ 102:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 106:	88 23       	and	r24, r24
+ 108:	f9 f0       	breq	.+62     	; 0x148 <__vector_7+0xe4>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+ 10a:	a7 eb       	ldi	r26, 0xB7	; 183
+ 10c:	b0 e0       	ldi	r27, 0x00	; 0
+ 10e:	50 96       	adiw	r26, 0x10	; 16
+ 110:	2d 91       	ld	r18, X+
+ 112:	3c 91       	ld	r19, X
+ 114:	51 97       	sbiw	r26, 0x11	; 17
+ 116:	52 96       	adiw	r26, 0x12	; 18
+ 118:	8c 91       	ld	r24, X
+ 11a:	52 97       	sbiw	r26, 0x12	; 18
+ 11c:	e8 2f       	mov	r30, r24
+ 11e:	f0 e0       	ldi	r31, 0x00	; 0
+ 120:	24 0f       	add	r18, r20
+ 122:	35 1f       	adc	r19, r21
+ 124:	ee 0f       	add	r30, r30
+ 126:	ff 1f       	adc	r31, r31
+ 128:	e9 54       	subi	r30, 0x49	; 73
+ 12a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 12c:	60 81       	ld	r22, Z
+ 12e:	71 81       	ldd	r23, Z+1	; 0x01
+ 130:	26 1b       	sub	r18, r22
+ 132:	37 0b       	sbc	r19, r23
+ 134:	51 96       	adiw	r26, 0x11	; 17
+ 136:	3c 93       	st	X, r19
+ 138:	2e 93       	st	-X, r18
+ 13a:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 13c:	51 83       	std	Z+1, r21	; 0x01
+ 13e:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1) % cyclesAveragedIR);
+ 140:	8f 5f       	subi	r24, 0xFF	; 255
+ 142:	87 70       	andi	r24, 0x07	; 7
+ 144:	52 96       	adiw	r26, 0x12	; 18
+ 146:	8c 93       	st	X, r24
+			// Near LED is on, we just did a, off reading, we are doing a near reading now and a dummy off reading next
+			if (running)
+			{
+				offData.addReading(adcVal);
+			}
+			PORTA &= ~BITVAL(PortANearLedBit);		// turn near LED off
+ 148:	de 98       	cbi	0x1b, 6	; 27
+			break;
+ 14a:	ed c0       	rjmp	.+474    	; 0x326 <__stack+0x1c7>
+
+		case 3:
+		case 7:
+			// LEDs are off, we just did a near reading, we are doing a dummy off reading now and a far reading next
+			if (running)
+ 14c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 150:	88 23       	and	r24, r24
+ 152:	f9 f0       	breq	.+62     	; 0x192 <__stack+0x33>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+ 154:	ad ed       	ldi	r26, 0xDD	; 221
+ 156:	b0 e0       	ldi	r27, 0x00	; 0
+ 158:	50 96       	adiw	r26, 0x10	; 16
+ 15a:	2d 91       	ld	r18, X+
+ 15c:	3c 91       	ld	r19, X
+ 15e:	51 97       	sbiw	r26, 0x11	; 17
+ 160:	52 96       	adiw	r26, 0x12	; 18
+ 162:	8c 91       	ld	r24, X
+ 164:	52 97       	sbiw	r26, 0x12	; 18
+ 166:	e8 2f       	mov	r30, r24
+ 168:	f0 e0       	ldi	r31, 0x00	; 0
+ 16a:	24 0f       	add	r18, r20
+ 16c:	35 1f       	adc	r19, r21
+ 16e:	ee 0f       	add	r30, r30
+ 170:	ff 1f       	adc	r31, r31
+ 172:	e3 52       	subi	r30, 0x23	; 35
+ 174:	ff 4f       	sbci	r31, 0xFF	; 255
+ 176:	60 81       	ld	r22, Z
+ 178:	71 81       	ldd	r23, Z+1	; 0x01
+ 17a:	26 1b       	sub	r18, r22
+ 17c:	37 0b       	sbc	r19, r23
+ 17e:	51 96       	adiw	r26, 0x11	; 17
+ 180:	3c 93       	st	X, r19
+ 182:	2e 93       	st	-X, r18
+ 184:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 186:	51 83       	std	Z+1, r21	; 0x01
+ 188:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1) % cyclesAveragedIR);
+ 18a:	8f 5f       	subi	r24, 0xFF	; 255
+ 18c:	87 70       	andi	r24, 0x07	; 7
+ 18e:	52 96       	adiw	r26, 0x12	; 18
+ 190:	8c 93       	st	X, r24
+			// LEDs are off, we just did a near reading, we are doing a dummy off reading now and a far reading next
+			if (running)
+			{
+				nearData.addReading(adcVal);
+			}
+			PORTB |= PortBFarLedMask;				// turn far LED on
+ 192:	88 b3       	in	r24, 0x18	; 24
+ 194:	83 60       	ori	r24, 0x03	; 3
+ 196:	88 bb       	out	0x18, r24	; 24
+			break;
+ 198:	c6 c0       	rjmp	.+396    	; 0x326 <__stack+0x1c7>
+			
+		case 10:
+			// Near LED is on, we just did an off reading, we are doing a near reading now and a fan reading next
+			if (running)
+ 19a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 19e:	88 23       	and	r24, r24
+ 1a0:	f9 f0       	breq	.+62     	; 0x1e0 <__stack+0x81>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+ 1a2:	a7 eb       	ldi	r26, 0xB7	; 183
+ 1a4:	b0 e0       	ldi	r27, 0x00	; 0
+ 1a6:	50 96       	adiw	r26, 0x10	; 16
+ 1a8:	6d 91       	ld	r22, X+
+ 1aa:	7c 91       	ld	r23, X
+ 1ac:	51 97       	sbiw	r26, 0x11	; 17
+ 1ae:	52 96       	adiw	r26, 0x12	; 18
+ 1b0:	8c 91       	ld	r24, X
+ 1b2:	52 97       	sbiw	r26, 0x12	; 18
+ 1b4:	e8 2f       	mov	r30, r24
+ 1b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b8:	64 0f       	add	r22, r20
+ 1ba:	75 1f       	adc	r23, r21
+ 1bc:	ee 0f       	add	r30, r30
+ 1be:	ff 1f       	adc	r31, r31
+ 1c0:	e9 54       	subi	r30, 0x49	; 73
+ 1c2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1c4:	c0 81       	ld	r28, Z
+ 1c6:	d1 81       	ldd	r29, Z+1	; 0x01
+ 1c8:	6c 1b       	sub	r22, r28
+ 1ca:	7d 0b       	sbc	r23, r29
+ 1cc:	51 96       	adiw	r26, 0x11	; 17
+ 1ce:	7c 93       	st	X, r23
+ 1d0:	6e 93       	st	-X, r22
+ 1d2:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 1d4:	51 83       	std	Z+1, r21	; 0x01
+ 1d6:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1) % cyclesAveragedIR);
+ 1d8:	8f 5f       	subi	r24, 0xFF	; 255
+ 1da:	87 70       	andi	r24, 0x07	; 7
+ 1dc:	52 96       	adiw	r26, 0x12	; 18
+ 1de:	8c 93       	st	X, r24
+			// Near LED is on, we just did an off reading, we are doing a near reading now and a fan reading next
+			if (running)
+			{
+				offData.addReading(adcVal);
+			}
+			PORTA &= ~BITVAL(PortANearLedBit);		// turn near LED off
+ 1e0:	de 98       	cbi	0x1b, 6	; 27
+
+#if DUAL_NOZZLE
+			if ((locTickCounter & 0x20u) == 0)
+ 1e2:	25 fd       	sbrc	r18, 5
+ 1e4:	0e c0       	rjmp	.+28     	; 0x202 <__stack+0xa3>
+			{
+				// Select thermistor 1
+				if (thermistor1Kmode)
+ 1e6:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <thermistor1Kmode>
+ 1ea:	88 23       	and	r24, r24
+ 1ec:	39 f0       	breq	.+14     	; 0x1fc <__stack+0x9d>
+				{
+					ADMUX = ((locTickCounter & 0x10u) != 0)
+						? 0b00110011u				// +ve input = ADC4, -ve input = ADC3, gain x20
+						: 0b00010011u;				// +ve input = ADC3, -ve input = ADC4, gain x20
+ 1ee:	24 fd       	sbrc	r18, 4
+ 1f0:	02 c0       	rjmp	.+4      	; 0x1f6 <__stack+0x97>
+ 1f2:	83 e1       	ldi	r24, 0x13	; 19
+ 1f4:	01 c0       	rjmp	.+2      	; 0x1f8 <__stack+0x99>
+ 1f6:	83 e3       	ldi	r24, 0x33	; 51
+ 1f8:	87 b9       	out	0x07, r24	; 7
+ 1fa:	95 c0       	rjmp	.+298    	; 0x326 <__stack+0x1c7>
+				}
+				else
+				{
+					ADMUX = (uint8_t)AdcThermistor1Chan;	// select thermistor 1 (ADC4) as a single-ended input
+ 1fc:	84 e0       	ldi	r24, 0x04	; 4
+ 1fe:	87 b9       	out	0x07, r24	; 7
+ 200:	92 c0       	rjmp	.+292    	; 0x326 <__stack+0x1c7>
+				}
+			}
+			else
+			{
+				// Select thermistor 2
+				if (thermistor1Kmode)
+ 202:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <thermistor1Kmode>
+ 206:	88 23       	and	r24, r24
+ 208:	39 f0       	breq	.+14     	; 0x218 <__stack+0xb9>
+				{
+					ADMUX = ((locTickCounter & 0x10u) != 0)
+						? 0b00010001u				// +ve input = ADC2, -ve input = ADC3, gain x20
+						: 0b00110001u;				// +ve input = ADC3, -ve input = ADC2, gain x20
+ 20a:	24 fd       	sbrc	r18, 4
+ 20c:	02 c0       	rjmp	.+4      	; 0x212 <__stack+0xb3>
+ 20e:	81 e3       	ldi	r24, 0x31	; 49
+ 210:	01 c0       	rjmp	.+2      	; 0x214 <__stack+0xb5>
+ 212:	81 e1       	ldi	r24, 0x11	; 17
+ 214:	87 b9       	out	0x07, r24	; 7
+ 216:	87 c0       	rjmp	.+270    	; 0x326 <__stack+0x1c7>
+				}
+				else
+				{
+					ADMUX = (uint8_t)AdcThermistor2Chan;	// select thermistor 2 (ADC2) as a single-ended input
+ 218:	82 e0       	ldi	r24, 0x02	; 2
+ 21a:	87 b9       	out	0x07, r24	; 7
+ 21c:	84 c0       	rjmp	.+264    	; 0x326 <__stack+0x1c7>
+#endif			
+			break;
+		
+		case 11:
+			// LEDs are off, we just did a near reading, we are doing a fan reading which we will discard, we will do another fan reading next
+			if (running)
+ 21e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 222:	88 23       	and	r24, r24
+ 224:	09 f4       	brne	.+2      	; 0x228 <__stack+0xc9>
+ 226:	7f c0       	rjmp	.+254    	; 0x326 <__stack+0x1c7>
+	writes(*this; volatile)
+	pre(invar())
+	pre(arg <= 1023)
+	post(invar())
+	{
+		sum = sum - readings[index] + arg;
+ 228:	ad ed       	ldi	r26, 0xDD	; 221
+ 22a:	b0 e0       	ldi	r27, 0x00	; 0
+ 22c:	50 96       	adiw	r26, 0x10	; 16
+ 22e:	2d 91       	ld	r18, X+
+ 230:	3c 91       	ld	r19, X
+ 232:	51 97       	sbiw	r26, 0x11	; 17
+ 234:	52 96       	adiw	r26, 0x12	; 18
+ 236:	8c 91       	ld	r24, X
+ 238:	52 97       	sbiw	r26, 0x12	; 18
+ 23a:	e8 2f       	mov	r30, r24
+ 23c:	f0 e0       	ldi	r31, 0x00	; 0
+ 23e:	24 0f       	add	r18, r20
+ 240:	35 1f       	adc	r19, r21
+ 242:	ee 0f       	add	r30, r30
+ 244:	ff 1f       	adc	r31, r31
+ 246:	e3 52       	subi	r30, 0x23	; 35
+ 248:	ff 4f       	sbci	r31, 0xFF	; 255
+ 24a:	60 81       	ld	r22, Z
+ 24c:	71 81       	ldd	r23, Z+1	; 0x01
+ 24e:	26 1b       	sub	r18, r22
+ 250:	37 0b       	sbc	r19, r23
+ 252:	51 96       	adiw	r26, 0x11	; 17
+ 254:	3c 93       	st	X, r19
+ 256:	2e 93       	st	-X, r18
+ 258:	50 97       	sbiw	r26, 0x10	; 16
+		readings[index] = arg;
+ 25a:	51 83       	std	Z+1, r21	; 0x01
+ 25c:	40 83       	st	Z, r20
+		index = static_cast<irIndex_t>((index + 1) % cyclesAveragedIR);
+ 25e:	8f 5f       	subi	r24, 0xFF	; 255
+ 260:	87 70       	andi	r24, 0x07	; 7
+ 262:	52 96       	adiw	r26, 0x12	; 18
+ 264:	8c 93       	st	X, r24
+ 266:	5f c0       	rjmp	.+190    	; 0x326 <__stack+0x1c7>
+			// LEDs are off and we are doing dummy fan readings
+			break;
+
+		case 14:
+			// LEDs are off, we just did a dummy fan reading, we are doing another fan reading now and a dummy off reading next
+			ADMUX = (uint8_t)AdcPhototransistorChan;	// select input 1 = phototransistor
+ 268:	81 e0       	ldi	r24, 0x01	; 1
+ 26a:	87 b9       	out	0x07, r24	; 7
+			break;
+ 26c:	5c c0       	rjmp	.+184    	; 0x326 <__stack+0x1c7>
+
+		case 15:
+			// LEDs are off, we just did a fan reading, we are doing an off reading now and a far reading next
+			if (running)
+ 26e:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 272:	88 23       	and	r24, r24
+ 274:	09 f4       	brne	.+2      	; 0x278 <__stack+0x119>
+ 276:	54 c0       	rjmp	.+168    	; 0x320 <__stack+0x1c1>
+			{
+				ThermistorData* currentThermistor =
+#if DUAL_NOZZLE
+					((locTickCounter & 0x20u) == 0) ? &thermistor1Data : &thermistor2Data;
+ 278:	25 ff       	sbrs	r18, 5
+ 27a:	03 c0       	rjmp	.+6      	; 0x282 <__stack+0x123>
+ 27c:	ed e6       	ldi	r30, 0x6D	; 109
+ 27e:	f0 e0       	ldi	r31, 0x00	; 0
+ 280:	02 c0       	rjmp	.+4      	; 0x286 <__stack+0x127>
+ 282:	e2 e9       	ldi	r30, 0x92	; 146
+ 284:	f0 e0       	ldi	r31, 0x00	; 0
+#else
+					&thermistor1Data;
+#endif
+				if (thermistor1Kmode)
+ 286:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <thermistor1Kmode>
+ 28a:	88 23       	and	r24, r24
+ 28c:	99 f1       	breq	.+102    	; 0x2f4 <__stack+0x195>
+				{
+					adcVal ^= 0x0200u;				// convert signed reading to unsigned biased by 512
+ 28e:	82 e0       	ldi	r24, 0x02	; 2
+ 290:	58 27       	eor	r21, r24
+					if ((locTickCounter & 0x10u) != 0)
+ 292:	24 ff       	sbrs	r18, 4
+ 294:	18 c0       	rjmp	.+48     	; 0x2c6 <__stack+0x167>
+					{
+						currentThermistor->readingSum = currentThermistor->readingSum - currentThermistor->readings[currentThermistor->index] + adcVal;
+ 296:	20 a1       	ldd	r18, Z+32	; 0x20
+ 298:	31 a1       	ldd	r19, Z+33	; 0x21
+ 29a:	94 a1       	ldd	r25, Z+36	; 0x24
+ 29c:	df 01       	movw	r26, r30
+ 29e:	a9 0f       	add	r26, r25
+ 2a0:	b1 1d       	adc	r27, r1
+ 2a2:	a9 0f       	add	r26, r25
+ 2a4:	b1 1d       	adc	r27, r1
+ 2a6:	24 0f       	add	r18, r20
+ 2a8:	35 1f       	adc	r19, r21
+ 2aa:	6d 91       	ld	r22, X+
+ 2ac:	7c 91       	ld	r23, X
+ 2ae:	11 97       	sbiw	r26, 0x01	; 1
+ 2b0:	26 1b       	sub	r18, r22
+ 2b2:	37 0b       	sbc	r19, r23
+ 2b4:	31 a3       	std	Z+33, r19	; 0x21
+ 2b6:	20 a3       	std	Z+32, r18	; 0x20
+						currentThermistor->readings[currentThermistor->index] = adcVal;
+ 2b8:	4d 93       	st	X+, r20
+ 2ba:	5c 93       	st	X, r21
+						currentThermistor->index = (currentThermistor->index + 1) & (thermistorSamplesAveraged - 1);
+ 2bc:	81 e0       	ldi	r24, 0x01	; 1
+ 2be:	89 0f       	add	r24, r25
+ 2c0:	87 70       	andi	r24, 0x07	; 7
+ 2c2:	84 a3       	std	Z+36, r24	; 0x24
+ 2c4:	2d c0       	rjmp	.+90     	; 0x320 <__stack+0x1c1>
+					}
+					else
+					{
+						currentThermistor->offsetSum = currentThermistor->offsetSum - currentThermistor->offsets[currentThermistor->index] + adcVal;
+ 2c6:	82 a1       	ldd	r24, Z+34	; 0x22
+ 2c8:	93 a1       	ldd	r25, Z+35	; 0x23
+ 2ca:	24 a1       	ldd	r18, Z+36	; 0x24
+ 2cc:	df 01       	movw	r26, r30
+ 2ce:	a2 0f       	add	r26, r18
+ 2d0:	b1 1d       	adc	r27, r1
+ 2d2:	a2 0f       	add	r26, r18
+ 2d4:	b1 1d       	adc	r27, r1
+ 2d6:	84 0f       	add	r24, r20
+ 2d8:	95 1f       	adc	r25, r21
+ 2da:	50 96       	adiw	r26, 0x10	; 16
+ 2dc:	2d 91       	ld	r18, X+
+ 2de:	3c 91       	ld	r19, X
+ 2e0:	51 97       	sbiw	r26, 0x11	; 17
+ 2e2:	82 1b       	sub	r24, r18
+ 2e4:	93 0b       	sbc	r25, r19
+ 2e6:	93 a3       	std	Z+35, r25	; 0x23
+ 2e8:	82 a3       	std	Z+34, r24	; 0x22
+						currentThermistor->offsets[currentThermistor->index] = adcVal;
+ 2ea:	51 96       	adiw	r26, 0x11	; 17
+ 2ec:	5c 93       	st	X, r21
+ 2ee:	4e 93       	st	-X, r20
+ 2f0:	50 97       	sbiw	r26, 0x10	; 16
+ 2f2:	16 c0       	rjmp	.+44     	; 0x320 <__stack+0x1c1>
+					}
+				}
+				else
+				{
+					currentThermistor->readingSum = currentThermistor->readingSum - currentThermistor->readings[currentThermistor->index] + adcVal;
+ 2f4:	20 a1       	ldd	r18, Z+32	; 0x20
+ 2f6:	31 a1       	ldd	r19, Z+33	; 0x21
+ 2f8:	84 a1       	ldd	r24, Z+36	; 0x24
+ 2fa:	df 01       	movw	r26, r30
+ 2fc:	a8 0f       	add	r26, r24
+ 2fe:	b1 1d       	adc	r27, r1
+ 300:	a8 0f       	add	r26, r24
+ 302:	b1 1d       	adc	r27, r1
+ 304:	24 0f       	add	r18, r20
+ 306:	35 1f       	adc	r19, r21
+ 308:	6d 91       	ld	r22, X+
+ 30a:	7c 91       	ld	r23, X
+ 30c:	11 97       	sbiw	r26, 0x01	; 1
+ 30e:	26 1b       	sub	r18, r22
+ 310:	37 0b       	sbc	r19, r23
+ 312:	31 a3       	std	Z+33, r19	; 0x21
+ 314:	20 a3       	std	Z+32, r18	; 0x20
+					currentThermistor->readings[currentThermistor->index] = adcVal;
+ 316:	4d 93       	st	X+, r20
+ 318:	5c 93       	st	X, r21
+					currentThermistor->index = (currentThermistor->index + 1) & (thermistorSamplesAveraged - 1);
+ 31a:	8f 5f       	subi	r24, 0xFF	; 255
+ 31c:	87 70       	andi	r24, 0x07	; 7
+ 31e:	84 a3       	std	Z+36, r24	; 0x24
+				}
+			}
+			PORTB |= PortBFarLedMask;				// turn far LED on
+ 320:	88 b3       	in	r24, 0x18	; 24
+ 322:	83 60       	ori	r24, 0x03	; 3
+ 324:	88 bb       	out	0x18, r24	; 24
+			break;
+	}
+	
+	++tickCounter;
+ 326:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <tickCounter>
+ 32a:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <tickCounter+0x1>
+ 32e:	01 96       	adiw	r24, 0x01	; 1
+ 330:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <tickCounter+0x1>
+ 334:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <tickCounter>
+
+#if ISR_DEBUG
+	PORTB &= (uint8_t)(~BITVAL(PortBDebugPin) & 0xFFu);	// set debug pin high
+#endif
+}
+ 338:	ff 91       	pop	r31
+ 33a:	ef 91       	pop	r30
+ 33c:	df 91       	pop	r29
+ 33e:	cf 91       	pop	r28
+ 340:	bf 91       	pop	r27
+ 342:	af 91       	pop	r26
+ 344:	9f 91       	pop	r25
+ 346:	8f 91       	pop	r24
+ 348:	7f 91       	pop	r23
+ 34a:	6f 91       	pop	r22
+ 34c:	5f 91       	pop	r21
+ 34e:	4f 91       	pop	r20
+ 350:	3f 91       	pop	r19
+ 352:	2f 91       	pop	r18
+ 354:	0f 90       	pop	r0
+ 356:	0f be       	out	0x3f, r0	; 63
+ 358:	0f 90       	pop	r0
+ 35a:	1f 90       	pop	r1
+ 35c:	18 95       	reti
+
+0000035e <_Z10shortDelayh>:
+// Each iteration of the loop takes 4 clocks plus one clock per NOP instruction in the body.
+// The additional overhead for the function, including calling it, is 12 clocks.
+// Therefore, with F_CPU = 8MHz and using 4 NOP instructions, it delays n + 1.5 microseconds.
+void shortDelay(uint8_t n)
+{
+	for (uint8_t i = 0; i < n; ++i)
+ 35e:	88 23       	and	r24, r24
+ 360:	41 f0       	breq	.+16     	; 0x372 <_Z10shortDelayh+0x14>
+ 362:	90 e0       	ldi	r25, 0x00	; 0
+	...
+ 36c:	9f 5f       	subi	r25, 0xFF	; 255
+ 36e:	89 13       	cpse	r24, r25
+ 370:	f9 cf       	rjmp	.-14     	; 0x364 <_Z10shortDelayh+0x6>
+ 372:	08 95       	ret
+
+00000374 <_Z8checkFanv>:
+
+// Check the fan
+void checkFan()	
+writes(fanChangeCount; volatile)
+{
+	if ((PORTA & BITVAL(PortAFanControlBit)) != 0)
+ 374:	dd 9b       	sbis	0x1b, 5	; 27
+ 376:	31 c0       	rjmp	.+98     	; 0x3da <_Z8checkFanv+0x66>
+	{
+		// Fan is on. Turn it off if thermistor is connected and temp <= off-threshold
+		if (   (thermistor1Data.readingSum < thermistor1Data.offsetSum)
+ 378:	e2 e9       	ldi	r30, 0x92	; 146
+ 37a:	f0 e0       	ldi	r31, 0x00	; 0
+ 37c:	20 a1       	ldd	r18, Z+32	; 0x20
+ 37e:	31 a1       	ldd	r19, Z+33	; 0x21
+ 380:	82 a1       	ldd	r24, Z+34	; 0x22
+ 382:	93 a1       	ldd	r25, Z+35	; 0x23
+#if DUAL_NOZZLE
+			&& (thermistor2Data.readingSum < thermistor2Data.offsetSum)
+ 384:	28 17       	cp	r18, r24
+ 386:	39 07       	cpc	r19, r25
+ 388:	08 f0       	brcs	.+2      	; 0x38c <_Z8checkFanv+0x18>
+ 38a:	62 c0       	rjmp	.+196    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+ 38c:	ed e6       	ldi	r30, 0x6D	; 109
+ 38e:	f0 e0       	ldi	r31, 0x00	; 0
+ 390:	20 a1       	ldd	r18, Z+32	; 0x20
+ 392:	31 a1       	ldd	r19, Z+33	; 0x21
+ 394:	82 a1       	ldd	r24, Z+34	; 0x22
+ 396:	93 a1       	ldd	r25, Z+35	; 0x23
+ 398:	28 17       	cp	r18, r24
+ 39a:	39 07       	cpc	r19, r25
+ 39c:	08 f4       	brcc	.+2      	; 0x3a0 <_Z8checkFanv+0x2c>
+ 39e:	5a c0       	rjmp	.+180    	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 3a0:	57 c0       	rjmp	.+174    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+		{
+			uint16_t fanDiff1 = thermistor1Data.offsetSum - thermistor1Data.readingSum;
+#if DUAL_NOZZLE
+			uint16_t fanDiff2 = thermistor2Data.offsetSum - thermistor2Data.readingSum;
+#endif
+			if (   (fanDiff1 >= thermistorConnectedThreshold) && (fanDiff1 <= thermistorOffThreshold)
+ 3a2:	60 91 67 00 	lds	r22, 0x0067	; 0x800067 <thermistorOffThreshold>
+ 3a6:	70 91 68 00 	lds	r23, 0x0068	; 0x800068 <thermistorOffThreshold+0x1>
+ 3aa:	68 17       	cp	r22, r24
+ 3ac:	79 07       	cpc	r23, r25
+ 3ae:	08 f4       	brcc	.+2      	; 0x3b2 <_Z8checkFanv+0x3e>
+ 3b0:	4f c0       	rjmp	.+158    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+#endif
+		   )
+		{
+			uint16_t fanDiff1 = thermistor1Data.offsetSum - thermistor1Data.readingSum;
+#if DUAL_NOZZLE
+			uint16_t fanDiff2 = thermistor2Data.offsetSum - thermistor2Data.readingSum;
+ 3b2:	4e 1b       	sub	r20, r30
+ 3b4:	5f 0b       	sbc	r21, r31
+#endif
+			if (   (fanDiff1 >= thermistorConnectedThreshold) && (fanDiff1 <= thermistorOffThreshold)
+#if DUAL_NOZZLE
+				&& (fanDiff2 >= thermistorConnectedThreshold) && (fanDiff2 <= thermistorOffThreshold)
+ 3b6:	42 17       	cp	r20, r18
+ 3b8:	53 07       	cpc	r21, r19
+ 3ba:	08 f4       	brcc	.+2      	; 0x3be <_Z8checkFanv+0x4a>
+ 3bc:	49 c0       	rjmp	.+146    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+ 3be:	64 17       	cp	r22, r20
+ 3c0:	75 07       	cpc	r23, r21
+ 3c2:	08 f4       	brcc	.+2      	; 0x3c6 <_Z8checkFanv+0x52>
+ 3c4:	45 c0       	rjmp	.+138    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+#endif
+			   )
+			{
+				if (fanChangeCount == 0)
+ 3c6:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <fanChangeCount>
+ 3ca:	81 11       	cpse	r24, r1
+ 3cc:	02 c0       	rjmp	.+4      	; 0x3d2 <_Z8checkFanv+0x5e>
+				{
+					PORTA &= (uint8_t)~BITVAL(PortAFanControlBit);	// turn fan off						
+ 3ce:	dd 98       	cbi	0x1b, 5	; 27
+ 3d0:	3f c0       	rjmp	.+126    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+				}
+				else
+				{
+					--fanChangeCount;
+ 3d2:	81 50       	subi	r24, 0x01	; 1
+ 3d4:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <fanChangeCount>
+ 3d8:	3b c0       	rjmp	.+118    	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+		uint16_t fanDiff1;
+#if DUAL_NOZZLE
+		uint16_t fanDiff2;
+#endif
+		// Fan is off. Turn it on if thermistor is disconnected or temp >= on-threshold
+		if (   (thermistor1Data.readingSum >= thermistor1Data.offsetSum)
+ 3da:	e2 e9       	ldi	r30, 0x92	; 146
+ 3dc:	f0 e0       	ldi	r31, 0x00	; 0
+ 3de:	20 a1       	ldd	r18, Z+32	; 0x20
+ 3e0:	31 a1       	ldd	r19, Z+33	; 0x21
+ 3e2:	82 a1       	ldd	r24, Z+34	; 0x22
+ 3e4:	93 a1       	ldd	r25, Z+35	; 0x23
+			|| ((fanDiff1 = thermistor1Data.offsetSum - thermistor1Data.readingSum) < thermistorConnectedThreshold)
+			|| (fanDiff1 >= thermistorOnThreshold)
+#if DUAL_NOZZLE
+			|| (thermistor2Data.readingSum >= thermistor2Data.offsetSum)
+			|| ((fanDiff2 = thermistor2Data.offsetSum - thermistor2Data.readingSum) < thermistorConnectedThreshold)
+			|| (fanDiff2 >= thermistorOnThreshold)
+ 3e6:	28 17       	cp	r18, r24
+ 3e8:	39 07       	cpc	r19, r25
+ 3ea:	48 f5       	brcc	.+82     	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+#if DUAL_NOZZLE
+		uint16_t fanDiff2;
+#endif
+		// Fan is off. Turn it on if thermistor is disconnected or temp >= on-threshold
+		if (   (thermistor1Data.readingSum >= thermistor1Data.offsetSum)
+			|| ((fanDiff1 = thermistor1Data.offsetSum - thermistor1Data.readingSum) < thermistorConnectedThreshold)
+ 3ec:	82 a1       	ldd	r24, Z+34	; 0x22
+ 3ee:	93 a1       	ldd	r25, Z+35	; 0x23
+ 3f0:	20 a1       	ldd	r18, Z+32	; 0x20
+ 3f2:	31 a1       	ldd	r19, Z+33	; 0x21
+ 3f4:	82 1b       	sub	r24, r18
+ 3f6:	93 0b       	sbc	r25, r19
+ 3f8:	20 91 6b 00 	lds	r18, 0x006B	; 0x80006b <thermistorConnectedThreshold>
+ 3fc:	30 91 6c 00 	lds	r19, 0x006C	; 0x80006c <thermistorConnectedThreshold+0x1>
+ 400:	82 17       	cp	r24, r18
+ 402:	93 07       	cpc	r25, r19
+ 404:	e0 f0       	brcs	.+56     	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+			|| (fanDiff1 >= thermistorOnThreshold)
+ 406:	40 91 69 00 	lds	r20, 0x0069	; 0x800069 <thermistorOnThreshold>
+ 40a:	50 91 6a 00 	lds	r21, 0x006A	; 0x80006a <thermistorOnThreshold+0x1>
+ 40e:	84 17       	cp	r24, r20
+ 410:	95 07       	cpc	r25, r21
+ 412:	a8 f4       	brcc	.+42     	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+#if DUAL_NOZZLE
+			|| (thermistor2Data.readingSum >= thermistor2Data.offsetSum)
+ 414:	ed e6       	ldi	r30, 0x6D	; 109
+ 416:	f0 e0       	ldi	r31, 0x00	; 0
+ 418:	60 a1       	ldd	r22, Z+32	; 0x20
+ 41a:	71 a1       	ldd	r23, Z+33	; 0x21
+ 41c:	82 a1       	ldd	r24, Z+34	; 0x22
+ 41e:	93 a1       	ldd	r25, Z+35	; 0x23
+ 420:	68 17       	cp	r22, r24
+ 422:	79 07       	cpc	r23, r25
+ 424:	60 f4       	brcc	.+24     	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+			|| ((fanDiff2 = thermistor2Data.offsetSum - thermistor2Data.readingSum) < thermistorConnectedThreshold)
+ 426:	82 a1       	ldd	r24, Z+34	; 0x22
+ 428:	93 a1       	ldd	r25, Z+35	; 0x23
+ 42a:	60 a1       	ldd	r22, Z+32	; 0x20
+ 42c:	71 a1       	ldd	r23, Z+33	; 0x21
+ 42e:	86 1b       	sub	r24, r22
+ 430:	97 0b       	sbc	r25, r23
+ 432:	82 17       	cp	r24, r18
+ 434:	93 07       	cpc	r25, r19
+ 436:	18 f0       	brcs	.+6      	; 0x43e <__LOCK_REGION_LENGTH__+0x3e>
+		uint16_t fanDiff1;
+#if DUAL_NOZZLE
+		uint16_t fanDiff2;
+#endif
+		// Fan is off. Turn it on if thermistor is disconnected or temp >= on-threshold
+		if (   (thermistor1Data.readingSum >= thermistor1Data.offsetSum)
+ 438:	84 17       	cp	r24, r20
+ 43a:	95 07       	cpc	r25, r21
+ 43c:	48 f0       	brcs	.+18     	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+			|| (fanDiff2 >= thermistorOnThreshold)
+#endif
+		   )
+		{
+			// We used to turn the fan on immediately, but now we delay it a little to try to improve noise immunity
+			if (fanChangeCount >= fanOnSeconds * thermistorSampleFreq)
+ 43e:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <fanChangeCount>
+ 442:	80 32       	cpi	r24, 0x20	; 32
+ 444:	10 f0       	brcs	.+4      	; 0x44a <__LOCK_REGION_LENGTH__+0x4a>
+			{
+				PORTA |= BITVAL(PortAFanControlBit);		// turn fan on			
+ 446:	dd 9a       	sbi	0x1b, 5	; 27
+ 448:	03 c0       	rjmp	.+6      	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+			}
+			else
+			{
+				fanChangeCount += 4;						// the time we wait before turning the fan on is 1/4 of the time we wait before turning it off
+ 44a:	8c 5f       	subi	r24, 0xFC	; 252
+ 44c:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <fanChangeCount>
+			}
+		}		
+	}
+	
+#ifndef __ECV__
+	wdt_reset();											// kick the watchdog
+ 450:	a8 95       	wdr
+#endif
+}
+ 452:	08 95       	ret
+#if DUAL_NOZZLE
+			&& (thermistor2Data.readingSum < thermistor2Data.offsetSum)
+#endif
+		   )
+		{
+			uint16_t fanDiff1 = thermistor1Data.offsetSum - thermistor1Data.readingSum;
+ 454:	e2 e9       	ldi	r30, 0x92	; 146
+ 456:	f0 e0       	ldi	r31, 0x00	; 0
+ 458:	82 a1       	ldd	r24, Z+34	; 0x22
+ 45a:	93 a1       	ldd	r25, Z+35	; 0x23
+ 45c:	20 a1       	ldd	r18, Z+32	; 0x20
+ 45e:	31 a1       	ldd	r19, Z+33	; 0x21
+ 460:	82 1b       	sub	r24, r18
+ 462:	93 0b       	sbc	r25, r19
+#if DUAL_NOZZLE
+			uint16_t fanDiff2 = thermistor2Data.offsetSum - thermistor2Data.readingSum;
+ 464:	ed e6       	ldi	r30, 0x6D	; 109
+ 466:	f0 e0       	ldi	r31, 0x00	; 0
+ 468:	42 a1       	ldd	r20, Z+34	; 0x22
+ 46a:	53 a1       	ldd	r21, Z+35	; 0x23
+ 46c:	00 a0       	ldd	r0, Z+32	; 0x20
+ 46e:	f1 a1       	ldd	r31, Z+33	; 0x21
+ 470:	e0 2d       	mov	r30, r0
+#endif
+			if (   (fanDiff1 >= thermistorConnectedThreshold) && (fanDiff1 <= thermistorOffThreshold)
+ 472:	20 91 6b 00 	lds	r18, 0x006B	; 0x80006b <thermistorConnectedThreshold>
+ 476:	30 91 6c 00 	lds	r19, 0x006C	; 0x80006c <thermistorConnectedThreshold+0x1>
+ 47a:	82 17       	cp	r24, r18
+ 47c:	93 07       	cpc	r25, r19
+ 47e:	08 f0       	brcs	.+2      	; 0x482 <__LOCK_REGION_LENGTH__+0x82>
+ 480:	90 cf       	rjmp	.-224    	; 0x3a2 <_Z8checkFanv+0x2e>
+ 482:	e6 cf       	rjmp	.-52     	; 0x450 <__LOCK_REGION_LENGTH__+0x50>
+
+00000484 <_ZN6IrData4initEv>:
+	return 0;												// to keep gcc happy
+}
+
+// Initialize the IR data structure
+void IrData::init()
+{
+ 484:	fc 01       	movw	r30, r24
+ 486:	9c 01       	movw	r18, r24
+ 488:	20 5f       	subi	r18, 0xF0	; 240
+ 48a:	3f 4f       	sbci	r19, 0xFF	; 255
+	writes(i; *this; volatile)
+	keep(i <= cyclesAveragedIR)
+	keep(forall j in 0..(i-1) :- readings[j] == 0)
+	decrease(cyclesAveragedIR - i)
+	{
+		readings[i] = 0;
+ 48c:	11 92       	st	Z+, r1
+ 48e:	11 92       	st	Z+, r1
+}
+
+// Initialize the IR data structure
+void IrData::init()
+{
+	for (uint8_t i = 0; i < cyclesAveragedIR; ++i)
+ 490:	e2 17       	cp	r30, r18
+ 492:	f3 07       	cpc	r31, r19
+ 494:	d9 f7       	brne	.-10     	; 0x48c <_ZN6IrData4initEv+0x8>
+	keep(forall j in 0..(i-1) :- readings[j] == 0)
+	decrease(cyclesAveragedIR - i)
+	{
+		readings[i] = 0;
+	}
+	index = 0;
+ 496:	fc 01       	movw	r30, r24
+ 498:	12 8a       	std	Z+18, r1	; 0x12
+	sum = 0;
+ 49a:	11 8a       	std	Z+17, r1	; 0x11
+ 49c:	10 8a       	std	Z+16, r1	; 0x10
+ 49e:	08 95       	ret
+
+000004a0 <_Z17runIRsensorAndFanv>:
+pre(thermistor1Data.invar())
+#if DUAL_NOZZLE
+pre(thermistor2Data.invar())
+#endif
+{
+	running = false;
+ 4a0:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+	
+	nearData.init();
+ 4a4:	8d ed       	ldi	r24, 0xDD	; 221
+ 4a6:	90 e0       	ldi	r25, 0x00	; 0
+ 4a8:	ed df       	rcall	.-38     	; 0x484 <_ZN6IrData4initEv>
+	farData.init();
+ 4aa:	8a ec       	ldi	r24, 0xCA	; 202
+ 4ac:	90 e0       	ldi	r25, 0x00	; 0
+ 4ae:	ea df       	rcall	.-44     	; 0x484 <_ZN6IrData4initEv>
+	offData.init();
+ 4b0:	87 eb       	ldi	r24, 0xB7	; 183
+ 4b2:	90 e0       	ldi	r25, 0x00	; 0
+ 4b4:	e7 df       	rcall	.-50     	; 0x484 <_ZN6IrData4initEv>
+
+	cli();
+ 4b6:	f8 94       	cli
+	// Set up timer 1 in mode 12
+	TCCR1A = 0;												// no direct outputs
+ 4b8:	1f bc       	out	0x2f, r1	; 47
+	TCCR1B = BITVAL(WGM13) | BITVAL(WGM12);					// set the mode, clock stopped for now
+ 4ba:	88 e1       	ldi	r24, 0x18	; 24
+ 4bc:	8e bd       	out	0x2e, r24	; 46
+	TCCR1C = 0;
+ 4be:	12 bc       	out	0x22, r1	; 34
+	TCNT1 = 0;
+ 4c0:	1d bc       	out	0x2d, r1	; 45
+ 4c2:	1c bc       	out	0x2c, r1	; 44
+	ICR1 = baseTopIR;
+ 4c4:	87 ee       	ldi	r24, 0xE7	; 231
+ 4c6:	93 e0       	ldi	r25, 0x03	; 3
+ 4c8:	95 bd       	out	0x25, r25	; 37
+ 4ca:	84 bd       	out	0x24, r24	; 36
+	OCR1B = 0;
+ 4cc:	19 bc       	out	0x29, r1	; 41
+ 4ce:	18 bc       	out	0x28, r1	; 40
+	TIFR1 = BITVAL(OCF1B);									// clear any pending interrupt
+ 4d0:	84 e0       	ldi	r24, 0x04	; 4
+ 4d2:	8b b9       	out	0x0b, r24	; 11
+	TIMSK1 = BITVAL(OCIE1B);								// enable the timer 0 compare match B interrupt
+ 4d4:	8c b9       	out	0x0c, r24	; 12
+	TCCR1B |= BITVAL(CS10);									// start the clock
+ 4d6:	8e b5       	in	r24, 0x2e	; 46
+ 4d8:	81 60       	ori	r24, 0x01	; 1
+ 4da:	8e bd       	out	0x2e, r24	; 46
+	
+	ADMUX = (uint8_t)AdcPhototransistorChan;				// select phototransistor input, single-ended mode
+ 4dc:	81 e0       	ldi	r24, 0x01	; 1
+ 4de:	87 b9       	out	0x07, r24	; 7
+	ADCSRA = BITVAL(ADEN) | BITVAL(ADATE) | BITVAL(ADPS2) | BITVAL(ADPS1);	// enable ADC, auto trigger enable, prescaler = 64 (ADC clock ~= 125kHz)
+ 4e0:	86 ea       	ldi	r24, 0xA6	; 166
+ 4e2:	86 b9       	out	0x06, r24	; 6
+	ADCSRB = BITVAL(ADTS2) | BITVAL(ADTS0) | BITVAL(BIN);	// start conversion on timer 1 compare match B, bipolar input mode when using differential inputs
+ 4e4:	85 e8       	ldi	r24, 0x85	; 133
+ 4e6:	83 b9       	out	0x03, r24	; 3
+	tickCounter = 0;
+ 4e8:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <tickCounter+0x1>
+ 4ec:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <tickCounter>
+	sei();
+ 4f0:	78 94       	sei
+	
+	while (tickCounter < 4) {}								// ignore the readings from the first few interrupts after changing mode
+ 4f2:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <tickCounter>
+ 4f6:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <tickCounter+0x1>
+ 4fa:	04 97       	sbiw	r24, 0x04	; 4
+ 4fc:	d0 f3       	brcs	.-12     	; 0x4f2 <_Z17runIRsensorAndFanv+0x52>
+	running = true;											// tell interrupt handler to collect readings
+ 4fe:	81 e0       	ldi	r24, 0x01	; 1
+ 500:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+	lastFanSampleTicks = 0;
+ 504:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <lastFanSampleTicks+0x1>
+ 508:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <lastFanSampleTicks>
+#if DUAL_NOZZLE
+	keep(thermistor2Data.invar())
+#endif
+	{
+		cli();
+		uint16_t locNearSum = nearData.sum;
+ 50c:	0f 2e       	mov	r0, r31
+ 50e:	fd ed       	ldi	r31, 0xDD	; 221
+ 510:	ef 2e       	mov	r14, r31
+ 512:	f0 e0       	ldi	r31, 0x00	; 0
+ 514:	ff 2e       	mov	r15, r31
+ 516:	f0 2d       	mov	r31, r0
+		uint16_t locFarSum = farData.sum;
+ 518:	0a ec       	ldi	r16, 0xCA	; 202
+ 51a:	10 e0       	ldi	r17, 0x00	; 0
+		uint16_t locOffSum = offData.sum;
+ 51c:	c7 eb       	ldi	r28, 0xB7	; 183
+ 51e:	d0 e0       	ldi	r29, 0x00	; 0
+			SetOutputSaturated();							// sensor is saturating, so set the output full on to indicate this
+		}
+		else
+		{
+			locNearSum = (locNearSum > locOffSum) ? locNearSum - locOffSum : 0;
+			locFarSum = (locFarSum > locOffSum) ? locFarSum - locOffSum : 0;
+ 520:	c1 2c       	mov	r12, r1
+ 522:	d1 2c       	mov	r13, r1
+	keep(thermistor1Data.invar())
+#if DUAL_NOZZLE
+	keep(thermistor2Data.invar())
+#endif
+	{
+		cli();
+ 524:	f8 94       	cli
+		uint16_t locNearSum = nearData.sum;
+ 526:	f7 01       	movw	r30, r14
+ 528:	80 89       	ldd	r24, Z+16	; 0x10
+ 52a:	91 89       	ldd	r25, Z+17	; 0x11
+		uint16_t locFarSum = farData.sum;
+ 52c:	f8 01       	movw	r30, r16
+ 52e:	20 89       	ldd	r18, Z+16	; 0x10
+ 530:	31 89       	ldd	r19, Z+17	; 0x11
+		uint16_t locOffSum = offData.sum;
+ 532:	48 89       	ldd	r20, Y+16	; 0x10
+ 534:	59 89       	ldd	r21, Y+17	; 0x11
+		sei();
+ 536:	78 94       	sei
+			
+		if (locNearSum >= saturatedThreshold || locFarSum >= saturatedThreshold)
+ 538:	80 33       	cpi	r24, 0x30	; 48
+ 53a:	fb e1       	ldi	r31, 0x1B	; 27
+ 53c:	9f 07       	cpc	r25, r31
+ 53e:	20 f4       	brcc	.+8      	; 0x548 <_Z17runIRsensorAndFanv+0xa8>
+ 540:	20 33       	cpi	r18, 0x30	; 48
+ 542:	6b e1       	ldi	r22, 0x1B	; 27
+ 544:	36 07       	cpc	r19, r22
+ 546:	18 f0       	brcs	.+6      	; 0x54e <_Z17runIRsensorAndFanv+0xae>
+inline void SetOutputSaturated()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB |= BITVAL(PortBDuet10KOutputBit);
+ 548:	c2 9a       	sbi	0x18, 2	; 24
+	PORTA |= BITVAL(PortADuet12KOutputBit);
+ 54a:	df 9a       	sbi	0x1b, 7	; 27
+ 54c:	52 c0       	rjmp	.+164    	; 0x5f2 <_Z17runIRsensorAndFanv+0x152>
+		{
+			SetOutputSaturated();							// sensor is saturating, so set the output full on to indicate this
+		}
+		else
+		{
+			locNearSum = (locNearSum > locOffSum) ? locNearSum - locOffSum : 0;
+ 54e:	48 17       	cp	r20, r24
+ 550:	59 07       	cpc	r21, r25
+ 552:	18 f4       	brcc	.+6      	; 0x55a <_Z17runIRsensorAndFanv+0xba>
+ 554:	84 1b       	sub	r24, r20
+ 556:	95 0b       	sbc	r25, r21
+ 558:	02 c0       	rjmp	.+4      	; 0x55e <_Z17runIRsensorAndFanv+0xbe>
+ 55a:	8c 2d       	mov	r24, r12
+ 55c:	9d 2d       	mov	r25, r13
+			locFarSum = (locFarSum > locOffSum) ? locFarSum - locOffSum : 0;
+ 55e:	42 17       	cp	r20, r18
+ 560:	53 07       	cpc	r21, r19
+ 562:	18 f4       	brcc	.+6      	; 0x56a <_Z17runIRsensorAndFanv+0xca>
+ 564:	24 1b       	sub	r18, r20
+ 566:	35 0b       	sbc	r19, r21
+ 568:	02 c0       	rjmp	.+4      	; 0x56e <_Z17runIRsensorAndFanv+0xce>
+ 56a:	2c 2d       	mov	r18, r12
+ 56c:	3d 2d       	mov	r19, r13
+			
+			if ((PINA & BITVAL(PortADuetInputBit)) == 0)
+ 56e:	c8 99       	sbic	0x19, 0	; 25
+ 570:	09 c0       	rjmp	.+18     	; 0x584 <_Z17runIRsensorAndFanv+0xe4>
+			{
+				// Backup mode (simple modulated IR sensor mode), suitable for x-endstop detection.
+				// We use only the near reading, because the far one can be high at too long a range.
+				if (locNearSum >= simpleNearThreshold)
+ 572:	80 3f       	cpi	r24, 0xF0	; 240
+ 574:	91 05       	cpc	r25, r1
+ 576:	18 f0       	brcs	.+6      	; 0x57e <_Z17runIRsensorAndFanv+0xde>
+inline void SetOutputOn()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB |= BITVAL(PortBDuet10KOutputBit);
+ 578:	c2 9a       	sbi	0x18, 2	; 24
+	PORTA &= ~BITVAL(PortADuet12KOutputBit);
+ 57a:	df 98       	cbi	0x1b, 7	; 27
+ 57c:	3a c0       	rjmp	.+116    	; 0x5f2 <_Z17runIRsensorAndFanv+0x152>
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB &= ~BITVAL(PortBDuet10KOutputBit);
+ 57e:	c2 98       	cbi	0x18, 2	; 24
+	PORTA &= ~BITVAL(PortADuet12KOutputBit);
+ 580:	df 98       	cbi	0x1b, 7	; 27
+ 582:	37 c0       	rjmp	.+110    	; 0x5f2 <_Z17runIRsensorAndFanv+0x152>
+				}
+			}
+			else
+			{
+				// Differential modulated IR sensor mode								
+				if (locNearSum > locFarSum && locFarSum >= farThreshold)
+ 584:	28 17       	cp	r18, r24
+ 586:	39 07       	cpc	r19, r25
+ 588:	30 f4       	brcc	.+12     	; 0x596 <_Z17runIRsensorAndFanv+0xf6>
+ 58a:	20 35       	cpi	r18, 0x50	; 80
+ 58c:	31 05       	cpc	r19, r1
+ 58e:	78 f1       	brcs	.+94     	; 0x5ee <_Z17runIRsensorAndFanv+0x14e>
+inline void SetOutputOn()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB |= BITVAL(PortBDuet10KOutputBit);
+ 590:	c2 9a       	sbi	0x18, 2	; 24
+	PORTA &= ~BITVAL(PortADuet12KOutputBit);
+ 592:	df 98       	cbi	0x1b, 7	; 27
+ 594:	2e c0       	rjmp	.+92     	; 0x5f2 <_Z17runIRsensorAndFanv+0x152>
+				// Differential modulated IR sensor mode								
+				if (locNearSum > locFarSum && locFarSum >= farThreshold)
+				{
+					SetOutputOn();
+				}
+				else if (locFarSum >= farThreshold && locNearSum * 6UL >= locFarSum * 5UL)
+ 596:	20 35       	cpi	r18, 0x50	; 80
+ 598:	31 05       	cpc	r19, r1
+ 59a:	48 f1       	brcs	.+82     	; 0x5ee <_Z17runIRsensorAndFanv+0x14e>
+ 59c:	a0 e0       	ldi	r26, 0x00	; 0
+ 59e:	b0 e0       	ldi	r27, 0x00	; 0
+ 5a0:	ac 01       	movw	r20, r24
+ 5a2:	bd 01       	movw	r22, r26
+ 5a4:	44 0f       	add	r20, r20
+ 5a6:	55 1f       	adc	r21, r21
+ 5a8:	66 1f       	adc	r22, r22
+ 5aa:	77 1f       	adc	r23, r23
+ 5ac:	84 0f       	add	r24, r20
+ 5ae:	95 1f       	adc	r25, r21
+ 5b0:	a6 1f       	adc	r26, r22
+ 5b2:	b7 1f       	adc	r27, r23
+ 5b4:	88 0f       	add	r24, r24
+ 5b6:	99 1f       	adc	r25, r25
+ 5b8:	aa 1f       	adc	r26, r26
+ 5ba:	bb 1f       	adc	r27, r27
+ 5bc:	a9 01       	movw	r20, r18
+ 5be:	60 e0       	ldi	r22, 0x00	; 0
+ 5c0:	70 e0       	ldi	r23, 0x00	; 0
+ 5c2:	4a 01       	movw	r8, r20
+ 5c4:	5b 01       	movw	r10, r22
+ 5c6:	88 0c       	add	r8, r8
+ 5c8:	99 1c       	adc	r9, r9
+ 5ca:	aa 1c       	adc	r10, r10
+ 5cc:	bb 1c       	adc	r11, r11
+ 5ce:	88 0c       	add	r8, r8
+ 5d0:	99 1c       	adc	r9, r9
+ 5d2:	aa 1c       	adc	r10, r10
+ 5d4:	bb 1c       	adc	r11, r11
+ 5d6:	48 0d       	add	r20, r8
+ 5d8:	59 1d       	adc	r21, r9
+ 5da:	6a 1d       	adc	r22, r10
+ 5dc:	7b 1d       	adc	r23, r11
+ 5de:	84 17       	cp	r24, r20
+ 5e0:	95 07       	cpc	r25, r21
+ 5e2:	a6 07       	cpc	r26, r22
+ 5e4:	b7 07       	cpc	r27, r23
+ 5e6:	18 f0       	brcs	.+6      	; 0x5ee <_Z17runIRsensorAndFanv+0x14e>
+inline void SetOutputApproaching()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB &= ~BITVAL(PortBDuet10KOutputBit);
+ 5e8:	c2 98       	cbi	0x18, 2	; 24
+	PORTA |= BITVAL(PortADuet12KOutputBit);
+ 5ea:	df 9a       	sbi	0x1b, 7	; 27
+ 5ec:	02 c0       	rjmp	.+4      	; 0x5f2 <_Z17runIRsensorAndFanv+0x152>
+inline void SetOutputOff()
+writes(volatile)
+{
+	// We do this in 2 operations, each of which is atomic, so that we don't mess up what the ISR is doing with the LEDs.
+#if DUAL_NOZZLE
+	PORTB &= ~BITVAL(PortBDuet10KOutputBit);
+ 5ee:	c2 98       	cbi	0x18, 2	; 24
+	PORTA &= ~BITVAL(PortADuet12KOutputBit);
+ 5f0:	df 98       	cbi	0x1b, 7	; 27
+				}
+			}			
+		}
+		
+		// Check whether we need to poll the fan
+		cli();
+ 5f2:	f8 94       	cli
+		uint16_t locTickCounter = tickCounter;
+ 5f4:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <tickCounter>
+ 5f8:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <tickCounter+0x1>
+		sei();
+ 5fc:	78 94       	sei
+		if (locTickCounter - lastFanSampleTicks >= thermistorSampleIntervalTicks)
+ 5fe:	20 91 64 00 	lds	r18, 0x0064	; 0x800064 <lastFanSampleTicks>
+ 602:	30 91 65 00 	lds	r19, 0x0065	; 0x800065 <lastFanSampleTicks+0x1>
+ 606:	82 1b       	sub	r24, r18
+ 608:	93 0b       	sbc	r25, r19
+ 60a:	84 3f       	cpi	r24, 0xF4	; 244
+ 60c:	91 40       	sbci	r25, 0x01	; 1
+ 60e:	08 f4       	brcc	.+2      	; 0x612 <_Z17runIRsensorAndFanv+0x172>
+ 610:	89 cf       	rjmp	.-238    	; 0x524 <_Z17runIRsensorAndFanv+0x84>
+		{
+			checkFan();
+ 612:	b0 de       	rcall	.-672    	; 0x374 <_Z8checkFanv>
+			lastFanSampleTicks += thermistorSampleIntervalTicks;
+ 614:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <lastFanSampleTicks>
+ 618:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <lastFanSampleTicks+0x1>
+ 61c:	8c 50       	subi	r24, 0x0C	; 12
+ 61e:	9e 4f       	sbci	r25, 0xFE	; 254
+ 620:	90 93 65 00 	sts	0x0065, r25	; 0x800065 <lastFanSampleTicks+0x1>
+ 624:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <lastFanSampleTicks>
+ 628:	7d cf       	rjmp	.-262    	; 0x524 <_Z17runIRsensorAndFanv+0x84>
+
+0000062a <_ZN14ThermistorData4initEjj>:
+	sum = 0;
+}
+
+// Initialize the thermistor data structure
+void ThermistorData::init(uint16_t readingInit, uint16_t offsetInit)
+{
+ 62a:	fc 01       	movw	r30, r24
+	readingSum = 0;
+ 62c:	11 a2       	std	Z+33, r1	; 0x21
+ 62e:	10 a2       	std	Z+32, r1	; 0x20
+	offsetSum = 0;
+ 630:	13 a2       	std	Z+35, r1	; 0x23
+ 632:	12 a2       	std	Z+34, r1	; 0x22
+ 634:	dc 01       	movw	r26, r24
+ 636:	9c 01       	movw	r18, r24
+ 638:	20 5f       	subi	r18, 0xF0	; 240
+ 63a:	3f 4f       	sbci	r19, 0xFF	; 255
+	keep(forall j in 0..(i - 1) :- offsets[j] == offsetInit)
+	keep(readingSum == + over readings.take(i))
+	keep(offsetSum == + over offsets.take(i))
+	decrease(thermistorSamplesAveraged - i)
+	{
+		readings[i] = readingInit;
+ 63c:	6d 93       	st	X+, r22
+ 63e:	7d 93       	st	X+, r23
+		readingSum += readingInit;
+ 640:	80 a1       	ldd	r24, Z+32	; 0x20
+ 642:	91 a1       	ldd	r25, Z+33	; 0x21
+ 644:	86 0f       	add	r24, r22
+ 646:	97 1f       	adc	r25, r23
+ 648:	91 a3       	std	Z+33, r25	; 0x21
+ 64a:	80 a3       	std	Z+32, r24	; 0x20
+		offsets[i] = offsetInit;
+ 64c:	1f 96       	adiw	r26, 0x0f	; 15
+ 64e:	5c 93       	st	X, r21
+ 650:	4e 93       	st	-X, r20
+ 652:	1e 97       	sbiw	r26, 0x0e	; 14
+		offsetSum += offsetInit;
+ 654:	82 a1       	ldd	r24, Z+34	; 0x22
+ 656:	93 a1       	ldd	r25, Z+35	; 0x23
+ 658:	84 0f       	add	r24, r20
+ 65a:	95 1f       	adc	r25, r21
+ 65c:	93 a3       	std	Z+35, r25	; 0x23
+ 65e:	82 a3       	std	Z+34, r24	; 0x22
+void ThermistorData::init(uint16_t readingInit, uint16_t offsetInit)
+{
+	readingSum = 0;
+	offsetSum = 0;
+
+	for (uint8_t i = 0; i < thermistorSamplesAveraged; ++i)
+ 660:	a2 17       	cp	r26, r18
+ 662:	b3 07       	cpc	r27, r19
+ 664:	59 f7       	brne	.-42     	; 0x63c <_ZN14ThermistorData4initEjj+0x12>
+		readings[i] = readingInit;
+		readingSum += readingInit;
+		offsets[i] = offsetInit;
+		offsetSum += offsetInit;
+	}
+	index = 0;
+ 666:	14 a2       	std	Z+36, r1	; 0x24
+ 668:	08 95       	ret
+
+0000066a <main>:
+writes(thermistor2Data)
+#endif
+writes(fanChangeCount; lastFanSampleTicks)				// fan variables
+writes(thermistor1Kmode; thermistorConnectedThreshold; thermistorOffThreshold; thermistorOnThreshold)
+{
+	cli();
+ 66a:	f8 94       	cli
+#if DUAL_NOZZLE
+	DIDR0 = BITVAL(AdcPhototransistorChan) | BITVAL(AdcThermistor1Chan) | BITVAL(AdcThermistor2Chan);
+ 66c:	86 e1       	ldi	r24, 0x16	; 22
+ 66e:	81 b9       	out	0x01, r24	; 1
+#else
+	DIDR0 = BITVAL(AdcPhototransistorChan) | BITVAL(AdcThermistor1Chan);
+															// disable digital input buffers on ADC pins
+#endif
+	// Set ports and pullup resistors
+	PORTA = BITVAL(PortADuetInputBit) | BITVAL(PortASeriesResistorSenseBit) | PortAUnusedBitMask;
+ 670:	89 e0       	ldi	r24, 0x09	; 9
+ 672:	8b bb       	out	0x1b, r24	; 27
+															// enable pullup on Duet input, series resistor sense input, and unused I/O pins
+	PORTB = PortBUnusedBitMask;								// enable pullup on unused I/O pins
+ 674:	18 ba       	out	0x18, r1	; 24
+	
+	// Enable outputs
+#if DUAL_NOZZLE
+	DDRA = BITVAL(PortAFanControlBit) | BITVAL(PortANearLedBit) | BITVAL(PortADuet12KOutputBit);
+ 676:	80 ee       	ldi	r24, 0xE0	; 224
+ 678:	8a bb       	out	0x1a, r24	; 26
+#else
+	DDRA = BITVAL(PortAFanControlBit) | BITVAL(PortANearLedBit) | BITVAL(PortADuet10KOutputBit) | BITVAL(PortADuet12KOutputBit);
+#endif
+
+#if DUAL_NOZZLE
+	DDRB = PortBFarLedMask | BITVAL(PortBDuet10KOutputBit);	// enable LED and 12K outputs on port B
+ 67a:	87 e0       	ldi	r24, 0x07	; 7
+ 67c:	87 bb       	out	0x17, r24	; 23
+ 67e:	c8 e2       	ldi	r28, 0x28	; 40
+#endif
+	
+	// Wait 10ms to ensure that the power has stabilized before we read the series resistor sense pin
+	for (uint8_t i = 0; i < 40; ++i)
+	{
+		shortDelay(255u);
+ 680:	8f ef       	ldi	r24, 0xFF	; 255
+ 682:	6d de       	rcall	.-806    	; 0x35e <_Z10shortDelayh>
+ 684:	c1 50       	subi	r28, 0x01	; 1
+#else
+	DDRB = PortBFarLedMask;									// enable LED outputs on port B
+#endif
+	
+	// Wait 10ms to ensure that the power has stabilized before we read the series resistor sense pin
+	for (uint8_t i = 0; i < 40; ++i)
+ 686:	e1 f7       	brne	.-8      	; 0x680 <main+0x16>
+	{
+		shortDelay(255u);
+	}
+	thermistor1Kmode = ((PINA & BITVAL(PortASeriesResistorSenseBit)) != 0);
+ 688:	89 b3       	in	r24, 0x19	; 25
+ 68a:	91 e0       	ldi	r25, 0x01	; 1
+ 68c:	28 2f       	mov	r18, r24
+ 68e:	28 70       	andi	r18, 0x08	; 8
+ 690:	83 ff       	sbrs	r24, 3
+ 692:	90 e0       	ldi	r25, 0x00	; 0
+ 694:	90 93 66 00 	sts	0x0066, r25	; 0x800066 <thermistor1Kmode>
+	
+	// Initialize the fan so that it won't come on at power up
+	uint16_t readingInit, offsetInit;
+	if (thermistor1Kmode)
+ 698:	22 23       	and	r18, r18
+ 69a:	c1 f0       	breq	.+48     	; 0x6cc <main+0x62>
+	{
+		// When reading the thermistor in 1K series resistor mode, we run ADC in differential bipolar mode, gain = 20 (effective gain is 10 because full-scale is 512 not 1024)
+		// We use the 1K mode sense pin as a +3.3V reference. Set it HIGH to reduce noise on it. We have already set the bit in the output register.
+		DDRA |= BITVAL(PortASeriesResistorSenseBit);
+ 69c:	d3 9a       	sbi	0x1a, 3	; 26
+		
+		thermistorConnectedThreshold = thermistorConnectedThreshold1K * thermistorSamplesAveraged;
+ 69e:	80 ef       	ldi	r24, 0xF0	; 240
+ 6a0:	90 e0       	ldi	r25, 0x00	; 0
+ 6a2:	90 93 6c 00 	sts	0x006C, r25	; 0x80006c <thermistorConnectedThreshold+0x1>
+ 6a6:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <thermistorConnectedThreshold>
+		thermistorOffThreshold = thermistorOffThreshold1K * thermistorSamplesAveraged;
+ 6aa:	80 ea       	ldi	r24, 0xA0	; 160
+ 6ac:	9a e0       	ldi	r25, 0x0A	; 10
+ 6ae:	90 93 68 00 	sts	0x0068, r25	; 0x800068 <thermistorOffThreshold+0x1>
+ 6b2:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <thermistorOffThreshold>
+		thermistorOnThreshold = thermistorOnThreshold1K * thermistorSamplesAveraged;
+ 6b6:	80 e8       	ldi	r24, 0x80	; 128
+ 6b8:	9c e0       	ldi	r25, 0x0C	; 12
+ 6ba:	90 93 6a 00 	sts	0x006A, r25	; 0x80006a <thermistorOnThreshold+0x1>
+ 6be:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <thermistorOnThreshold>
+		offsetInit = 512;
+ 6c2:	00 e0       	ldi	r16, 0x00	; 0
+ 6c4:	12 e0       	ldi	r17, 0x02	; 2
+		readingInit = offsetInit - thermistorConnectedThreshold1K;
+ 6c6:	c2 ee       	ldi	r28, 0xE2	; 226
+ 6c8:	d1 e0       	ldi	r29, 0x01	; 1
+ 6ca:	16 c0       	rjmp	.+44     	; 0x6f8 <main+0x8e>
+	}
+	else
+	{
+		// When reading the thermistor in 4.7K series resistor mode, we run ADC in single-ended mode, gain = 1
+		thermistorConnectedThreshold = thermistorConnectedThreshold4K7 * thermistorSamplesAveraged;
+ 6cc:	88 e3       	ldi	r24, 0x38	; 56
+ 6ce:	90 e0       	ldi	r25, 0x00	; 0
+ 6d0:	90 93 6c 00 	sts	0x006C, r25	; 0x80006c <thermistorConnectedThreshold+0x1>
+ 6d4:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <thermistorConnectedThreshold>
+		thermistorOffThreshold = thermistorOffThreshold4K7 * thermistorSamplesAveraged;
+ 6d8:	80 e7       	ldi	r24, 0x70	; 112
+ 6da:	92 e0       	ldi	r25, 0x02	; 2
+ 6dc:	90 93 68 00 	sts	0x0068, r25	; 0x800068 <thermistorOffThreshold+0x1>
+ 6e0:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <thermistorOffThreshold>
+		thermistorOnThreshold = thermistorOnThreshold4K7 * thermistorSamplesAveraged;
+ 6e4:	80 ee       	ldi	r24, 0xE0	; 224
+ 6e6:	92 e0       	ldi	r25, 0x02	; 2
+ 6e8:	90 93 6a 00 	sts	0x006A, r25	; 0x80006a <thermistorOnThreshold+0x1>
+ 6ec:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <thermistorOnThreshold>
+		offsetInit = 1023;
+ 6f0:	0f ef       	ldi	r16, 0xFF	; 255
+ 6f2:	13 e0       	ldi	r17, 0x03	; 3
+		readingInit = offsetInit - thermistorConnectedThreshold4K7;
+ 6f4:	c8 ef       	ldi	r28, 0xF8	; 248
+ 6f6:	d3 e0       	ldi	r29, 0x03	; 3
+	}
+
+	thermistor1Data.init(readingInit, offsetInit);
+ 6f8:	a8 01       	movw	r20, r16
+ 6fa:	be 01       	movw	r22, r28
+ 6fc:	82 e9       	ldi	r24, 0x92	; 146
+ 6fe:	90 e0       	ldi	r25, 0x00	; 0
+ 700:	94 df       	rcall	.-216    	; 0x62a <_ZN14ThermistorData4initEjj>
+#if DUAL_NOZZLE
+	thermistor2Data.init(readingInit, offsetInit);
+ 702:	a8 01       	movw	r20, r16
+ 704:	be 01       	movw	r22, r28
+ 706:	8d e6       	ldi	r24, 0x6D	; 109
+ 708:	90 e0       	ldi	r25, 0x00	; 0
+ 70a:	8f df       	rcall	.-226    	; 0x62a <_ZN14ThermistorData4initEjj>
+#endif
+
+	sei();
+ 70c:	78 94       	sei
+				: "I" (_SFR_IO_ADDR(_WD_CONTROL_REG)),
+				"r" ((uint8_t)(_BV(_WD_CHANGE_BIT) | _BV(WDE))),
+				"r" ((uint8_t) ((value & 0x08 ? _WD_PS3_MASK : 0x00) |
+						_BV(WDE) | (value & 0x07)) )
+				: "r0"
+		);
+ 70e:	9d e0       	ldi	r25, 0x0D	; 13
+ 710:	88 e1       	ldi	r24, 0x18	; 24
+ 712:	0f b6       	in	r0, 0x3f	; 63
+ 714:	f8 94       	cli
+ 716:	a8 95       	wdr
+ 718:	81 bd       	out	0x21, r24	; 33
+ 71a:	0f be       	out	0x3f, r0	; 63
+ 71c:	91 bd       	out	0x21, r25	; 33
+
+#ifndef __ECV__												// eCv++ doesn't understand gcc assembler syntax
+	wdt_enable(WDTO_500MS);									// enable the watchdog (we kick it when checking the fan)	
+#endif
+		
+	runIRsensorAndFan();									// doesn't return
+ 71e:	c0 de       	rcall	.-640    	; 0x4a0 <_Z17runIRsensorAndFanv>
+
+00000720 <_exit>:
+ 720:	f8 94       	cli
+
+00000722 <__stop_program>:
+ 722:	ff cf       	rjmp	.-2      	; 0x722 <__stop_program>
