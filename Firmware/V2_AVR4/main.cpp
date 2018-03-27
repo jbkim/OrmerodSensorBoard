@@ -1,8 +1,6 @@
 /*
- * OrmerodLedSensor.cpp
+ * main.cpp
  *
- * Created: 16/02/2014 21:15:50
- *  Author: David
  */ 
 
 #include "ecv.h"
